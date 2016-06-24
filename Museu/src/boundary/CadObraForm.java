@@ -123,6 +123,7 @@ public class CadObraForm implements ActionListener {
 		return o;
 	}
 
+	/*
 	private void obraToForm(Obra o) {
 		txtNome.setText(o.getNome());
 		txtAutor.setText(o.getAutor());
@@ -132,6 +133,7 @@ public class CadObraForm implements ActionListener {
 		txtDimensoes.setText(o.getDimensoes());
 		txtAno.setText(String.valueOf(o.getAno()));
 	}
+	*/
 	
 
 	@Override
