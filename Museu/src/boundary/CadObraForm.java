@@ -21,6 +21,8 @@ import javax.swing.event.ListSelectionListener;
 
 import control.ObraControl;
 import entidade.Obra;
+import javax.swing.JEditorPane;
+import javax.swing.SwingConstants;
 
 public class CadObraForm implements ActionListener {
 	private JFrame janela = new JFrame("Cadastro de Obra");
@@ -33,49 +35,96 @@ public class CadObraForm implements ActionListener {
 	private JTextField txtAno = new JTextField();
 	private JButton btnAdicionar = new JButton("Adicionar");
 	private JButton btnCancelar = new JButton("Cancelar");
+	private JButton btnUpload = new JButton("Upload Imagem");
 	private ObraControl control = new ObraControl();
-	private JTable tabela;
+	private JLabel lblimagem = new JLabel("Imagem");
+	private	JLabel lblnome = new JLabel("Nome");
+	private JLabel lblautor = new JLabel("Autor");
+	private JLabel lbldesc = new JLabel("Descrição");
+	private JLabel lblcat = new JLabel("Categoria");
+	private JLabel lblmaterial = new JLabel("Material");
+	private JLabel lbldimensoes = new JLabel("Dimensões");
+	private JLabel lblano = new JLabel("Ano");	
 
 	public CadObraForm() {
-		JPanel panPrincipal = new JPanel(new BorderLayout());
-		JScrollPane panTable = new JScrollPane();
-		JPanel panFormulario = new JPanel(new GridLayout(5, 2));
-		panFormulario.add(new JLabel("Nome"));
+		JPanel panPrincipal = new JPanel();
+		JPanel panFormulario = new JPanel();
+		panFormulario.setBounds(0, 90, 484, 371);
+		
+		panFormulario.setLayout(null);
+		panPrincipal.setLayout(null);
+				
+
+		lblnome.setBounds(10, 7, 146, 23);
+		panFormulario.add(lblnome);
+		txtNome.setBounds(69, 7, 171, 23);
 		panFormulario.add(txtNome);
-		panFormulario.add(new JLabel("Autor"));
+		
+		lblautor.setBounds(10, 41, 146, 23);
+		panFormulario.add(lblautor);
+		txtAutor.setBounds(69, 41, 171, 23);
 		panFormulario.add(txtAutor);
-		panFormulario.add(new JLabel("Descrição"));
+		
+		lbldesc.setBounds(10, 75, 146, 23);
+		panFormulario.add(lbldesc);
+		txtDescricao.setBounds(69, 75, 171, 58);
 		panFormulario.add(txtDescricao);
-		panFormulario.add(new JLabel("Categoria"));
+		
+		lblcat.setBounds(10, 144, 146, 23);
+		panFormulario.add(lblcat);
+		txtCategoria.setBounds(69, 144, 171, 23);
 		panFormulario.add(txtCategoria);
-		panFormulario.add(new JLabel("Material"));
+		
+		lblmaterial.setBounds(10, 178, 146, 23);
+		panFormulario.add(lblmaterial);
+		txtMaterial.setBounds(69, 178, 171, 23);
 		panFormulario.add(txtMaterial);
-		panFormulario.add(new JLabel("Dimensões"));
+		
+		lbldimensoes.setBounds(10, 212, 146, 23);
+		panFormulario.add(lbldimensoes);
+		txtDimensoes.setBounds(69, 212, 171, 23);
 		panFormulario.add(txtDimensoes);
-		panFormulario.add(new JLabel("Ano"));
+		txtAno.setBounds(69, 246, 84, 23);
 		panFormulario.add(txtAno);
+		
+		btnAdicionar.setBounds(10, 311, 230, 23);
 		panFormulario.add(btnAdicionar);
-		panFormulario.add(btnCancelar);
 		btnAdicionar.addActionListener(this);
+		btnCancelar.setBounds(244, 311, 230, 23);
+		panFormulario.add(btnCancelar);
 		btnCancelar.addActionListener(this);
+		panFormulario.add(btnUpload);
+		btnUpload.setBounds(309, 212, 107, 23);
+		panFormulario.add(lblimagem);
+		btnUpload.addActionListener(this);
+		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
+		lblimagem.setBounds(250, 11, 224, 192);
+		
+		//PANLOGO
+		JPanel panLogo = new JPanel();
+		panLogo.setBounds(0, 0, 484, 90);
+		panLogo.setLayout(null);
+		panPrincipal.add(panLogo);
+		//FIM PANLOGO
+		
+		panPrincipal.add(panFormulario);
+		
+		lblano.setBounds(10, 246, 146, 23);
+		panFormulario.add(lblano);
+		panPrincipal.add(panLogo);
+				
 
-		panPrincipal.add(panFormulario, BorderLayout.NORTH);
-		panPrincipal.add(panTable, BorderLayout.CENTER);
 
 
-//		Pesquisar
-//		tabela = new JTable(control);
-//		tabela.getSelectionModel().addListSelectionListener(this);
-
-		panTable.getViewport().add(tabela);
-
+		
 		janela.setContentPane(panPrincipal);
+		
+		
 
-		janela.setSize(600, 400);
+		janela.setSize(500, 500);
 		janela.setVisible(true);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
 
 	public Obra formToObra() {
 		Obra o = new Obra();
@@ -98,25 +147,18 @@ public class CadObraForm implements ActionListener {
 		txtDimensoes.setText(o.getDimensoes());
 		txtAno.setText(String.valueOf(o.getAno()));
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnAdicionar) {
 			control.adicionar(formToObra());
-			tabela.invalidate();
-			tabela.revalidate();
+
 		} else if (e.getSource() == btnCancelar) {
 //fechar janela
+		} else if (e.getSource() == btnUpload) {
+			
 		}
 
 	}
-
-//	Pesquisar
-//	@Override
-//	public void valueChanged(ListSelectionEvent e) {
-//		int linha = tabela.getSelectedRow();
-//		Obra o = control.getLista().get(linha);
-//		obraToForm(o);
-//		System.out.println(" Linha selecionada " + linha);
-//	}
 }
