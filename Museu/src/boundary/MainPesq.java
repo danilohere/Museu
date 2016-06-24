@@ -1,11 +1,7 @@
 package boundary;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -14,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -32,10 +27,8 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 
 	public MainPesq() {
 		JPanel panPrincipal = new JPanel();
-		JScrollPane panTable = new JScrollPane();
-		panTable.setBounds(0, 165, 584, 295);
 		JPanel panFormulario = new JPanel();
-		panFormulario.setBounds(0, 90, 584, 75);
+		panFormulario.setBounds(0, 90, 584, 371);
 		panFormulario.setLayout(null);
 		JLabel lblDigiteONome = new JLabel("Digite o Nome da Obra:");
 		lblDigiteONome.setBounds(32, 11, 146, 23);
@@ -54,14 +47,32 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 		btnLogar.setBounds(528, 56, 46, 23);
 		panLogo.add(btnLogar);
 		panPrincipal.add(panLogo);
+		JScrollPane panTable = new JScrollPane();
+		panTable.setBounds(0, 165, 584, 242);
 		// FIM PANLOGO
 
 		tabela = new JTable(control);
 		tabela.getSelectionModel().addListSelectionListener(this);
-
-		panPrincipal.add(panFormulario);
 		panPrincipal.add(panTable);
 		panTable.setViewportView(tabela);
+
+		panPrincipal.add(panFormulario);
+		
+		JButton btnVerDetalhes = new JButton("Ver detalhes");
+		btnVerDetalhes.setBounds(35, 337, 120, 23);
+		panFormulario.add(btnVerDetalhes);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setBounds(165, 337, 120, 23);
+		panFormulario.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.setBounds(295, 337, 120, 23);
+		panFormulario.add(btnAlterar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(425, 337, 120, 23);
+		panFormulario.add(btnExcluir);
 		janela.setTitle("Museu Digital");
 
 		janela.setContentPane(panPrincipal);
@@ -89,9 +100,8 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 			tabela.invalidate();
 			tabela.revalidate();
 		} else if (e.getSource() == btnLogar) {
-			// fechar janela
-			// tabela.invalidate();
-			// tabela.revalidate();
+			// abrir tela login
+	
 		}
 	}
 

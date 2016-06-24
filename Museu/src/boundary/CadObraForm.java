@@ -1,27 +1,17 @@
 package boundary;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import control.ObraControl;
 import entidade.Obra;
-import javax.swing.JEditorPane;
 import javax.swing.SwingConstants;
 
 public class CadObraForm implements ActionListener {
@@ -114,13 +104,8 @@ public class CadObraForm implements ActionListener {
 		panPrincipal.add(panLogo);
 				
 
-
-
-		
 		janela.setContentPane(panPrincipal);
 		
-		
-
 		janela.setSize(500, 500);
 		janela.setVisible(true);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -155,7 +140,7 @@ public class CadObraForm implements ActionListener {
 			control.adicionar(formToObra());
 
 		} else if (e.getSource() == btnCancelar) {
-//fechar janela
+//		fechar janela
 		} else if (e.getSource() == btnUpload) {
 			
 		}

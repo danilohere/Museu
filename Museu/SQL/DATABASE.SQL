@@ -10,4 +10,5 @@ CREATE TABLE obra (
 	categoria varchar(30),
 	material varchar(50),
 	dimensoes varchar(20),
-	ano int);
+	ano int,
+	imagem varchar(max));
