@@ -24,6 +24,10 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 	private JTextField txtPesquisa = new JTextField();
 	private JButton btnPesquisar = new JButton("Pesquisar");
 	private JButton btnLogar = new JButton("L");
+	private JButton btnVerDetalhes = new JButton("Ver detalhes");
+	private JButton btnAdicionar = new JButton("Adicionar");
+	private JButton btnAlterar = new JButton("Alterar");
+	private JButton btnExcluir = new JButton("Excluir");
 
 	public MainPesq() {
 		JPanel panPrincipal = new JPanel();
@@ -58,21 +62,23 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 
 		panPrincipal.add(panFormulario);
 		
-		JButton btnVerDetalhes = new JButton("Ver detalhes");
+		
 		btnVerDetalhes.setBounds(35, 337, 120, 23);
 		panFormulario.add(btnVerDetalhes);
 		
-		JButton btnAdicionar = new JButton("Adicionar");
+		
 		btnAdicionar.setBounds(165, 337, 120, 23);
 		panFormulario.add(btnAdicionar);
+		btnAdicionar.addActionListener(this);
 		
-		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.setBounds(295, 337, 120, 23);
 		panFormulario.add(btnAlterar);
+		btnAlterar.addActionListener(this);
 		
-		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.setBounds(425, 337, 120, 23);
 		panFormulario.add(btnExcluir);
+		btnExcluir.addActionListener(this);
+		
 		janela.setTitle("Museu Digital");
 
 		janela.setContentPane(panPrincipal);
@@ -88,8 +94,8 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		int linha = tabela.getSelectedRow();
-		Obra o = control.getLista().get(linha);
+	//	int linha = tabela.getSelectedRow();
+	//	Obra o = control.getLista().get(linha);
 	}
 
 	@Override
@@ -99,7 +105,19 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 			List<Obra> lista = control.pesquisar(txtPesquisa.getText());
 			tabela.invalidate();
 			tabela.revalidate();
-		} else if (e.getSource() == btnLogar) {
+		} else if (e.getSource() == btnAdicionar) {
+			System.out.println("Botão Adicionar");
+			new CadObraForm();
+	    } else if (e.getSource() == btnLogar) {
+			// abrir tela login
+	
+		} else if (e.getSource() == btnVerDetalhes) {
+			// abrir tela login
+	
+		} else if (e.getSource() == btnAlterar) {
+			// abrir tela login
+	
+		} else if (e.getSource() == btnExcluir) {
 			// abrir tela login
 	
 		}

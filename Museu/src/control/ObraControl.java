@@ -107,7 +107,7 @@ public class ObraControl implements TableModel {
 
 	@Override
 	public String getColumnName(int columnIndex) {
-		String[] nomes = { "Nome", "Autor", "Descrição" };
+		String[] nomes = { "Nome", "Autor", "Descrição", "" };
 		return nomes[columnIndex];
 	}
 

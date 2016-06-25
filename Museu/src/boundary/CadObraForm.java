@@ -119,7 +119,8 @@ public class CadObraForm implements ActionListener {
 		o.setCategoria(txtCategoria.getText());
 		o.setMaterial(txtMaterial.getText());
 		o.setDimensoes(txtDimensoes.getText());
-		o.setAno(Integer.parseInt(txtNome.getText()));
+		o.setAno(Integer.parseInt(txtAno.getText()));
+		o.setImagem(lblimagem.getText());
 		return o;
 	}
 
@@ -140,9 +141,8 @@ public class CadObraForm implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnAdicionar) {
 			control.adicionar(formToObra());
-
 		} else if (e.getSource() == btnCancelar) {
-//		fechar janela
+		 janela.dispose();
 		} else if (e.getSource() == btnUpload) {
 			
 		}
