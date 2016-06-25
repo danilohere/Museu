@@ -10,7 +10,7 @@ import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import db.DbUtil;
+import dao.DAOUtil;
 import entidade.Obra;
 
 public class ObraControl implements TableModel {
@@ -20,7 +20,7 @@ public class ObraControl implements TableModel {
 	public void adicionar(Obra obra) {
 		lista.add(obra);
 		try {
-			Connection con = DbUtil.getConnection();
+			Connection con = DAOUtil.getConnection();
 			String sql = "INSERT INTO obra VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setLong(1, 0);
@@ -42,7 +42,7 @@ public class ObraControl implements TableModel {
 
 	public void excluir(long id) {
 		try {
-			Connection con = DbUtil.getConnection();
+			Connection con = DAOUtil.getConnection();
 			String sql = "DELETE FROM obra WHERE id = ?";
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setLong(1, id);
@@ -59,7 +59,7 @@ public class ObraControl implements TableModel {
 	public List<Obra> pesquisar(String nome) {
 		List<Obra> resultados = new ArrayList<Obra>();
 		try {
-			Connection con = DbUtil.getConnection();
+			Connection con = DAOUtil.getConnection();
 			String sql = "SELECT * FROM obra WHERE nome like ? ";
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setString(1, "%" + nome + "%");
@@ -87,6 +87,34 @@ public class ObraControl implements TableModel {
 		return resultados;
 	}
 
+	public Obra pesquisarPorId(Long id) {
+		Obra o = new Obra();
+		try {
+			Connection con = DAOUtil.getConnection();
+			String sql = "SELECT * FROM obra WHERE id = ? ";
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setLong(1, id);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				o.setId(rs.getLong("id"));
+				o.setNome(rs.getString("nome"));
+				o.setAutor(rs.getString("autor"));
+				o.setDescricao(rs.getString("descricao"));
+				o.setCategoria(rs.getString("categoria"));
+				o.setMaterial(rs.getString("material"));
+				o.setDimensoes(rs.getString("dimensoes"));
+				o.setAno(rs.getInt("ano"));
+				o.setImagem(rs.getString("imagem"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return o;
+	}
+
 	public void setLista(List<Obra> lista) {
 		this.lista = lista;
 	}
@@ -102,18 +130,18 @@ public class ObraControl implements TableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 3;
+		return 4;
 	}
 
 	@Override
 	public String getColumnName(int columnIndex) {
-		String[] nomes = { "Nome", "Autor", "Descrição"};
+		String[] nomes = { "ID", "Nome", "Autor", "Descrição" };
 		return nomes[columnIndex];
 	}
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		Class<?>[] classes = { String.class, String.class, String.class };
+		Class<?>[] classes = { Long.class, String.class, String.class, String.class };
 		return classes[columnIndex];
 	}
 

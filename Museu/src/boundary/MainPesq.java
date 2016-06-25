@@ -28,6 +28,7 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 	private JButton btnAdicionar = new JButton("Adicionar");
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
+	private long id;
 
 	public MainPesq() {
 		JPanel panPrincipal = new JPanel();
@@ -65,6 +66,7 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 		
 		btnVerDetalhes.setBounds(35, 337, 120, 23);
 		panFormulario.add(btnVerDetalhes);
+		btnVerDetalhes.addActionListener(this);
 		
 		
 		btnAdicionar.setBounds(165, 337, 120, 23);
@@ -112,16 +114,15 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 			// abrir tela login
 	
 		} else if (e.getSource() == btnVerDetalhes) {
-			// pegar ID do item selecionado e enviar para a tela detalhes
-			new VerObraForm();
+			id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0); 
+			new VerObraForm(id);
 	
 		} else if (e.getSource() == btnAlterar) {
 			// abrir tela login
 	
 		} else if (e.getSource() == btnExcluir) {
-			//long id = 
-			//control.excluir(id);
-	
+			id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0); 
+			control.excluir(id);
 		}
 	}
 

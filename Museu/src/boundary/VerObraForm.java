@@ -35,11 +35,10 @@ public class VerObraForm implements ActionListener {
 	private JLabel lbldimensoes = new JLabel("Dimensões");
 	private JLabel lblano = new JLabel("Ano");
 
-	public VerObraForm() {
+	public VerObraForm(long id) {
 		JPanel panPrincipal = new JPanel();
 		JPanel panFormulario = new JPanel();
 		panFormulario.setBounds(0, 90, 484, 371);
-
 		panFormulario.setLayout(null);
 		panPrincipal.setLayout(null);
 
@@ -85,7 +84,7 @@ public class VerObraForm implements ActionListener {
 		panFormulario.add(lblimagem);
 		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
 		lblimagem.setBounds(250, 11, 224, 192);
-
+		
 		// PANLOGO
 		JPanel panLogo = new JPanel();
 		panLogo.setBounds(0, 0, 484, 90);
@@ -98,10 +97,11 @@ public class VerObraForm implements ActionListener {
 		lblano.setBounds(10, 246, 146, 23);
 		panFormulario.add(lblano);
 		panPrincipal.add(panLogo);
+		
+		Obra o = control.pesquisarPorId(id);
+		obraToForm(o);
 		janela.setTitle("Detalhes da Obra");
-
 		janela.setContentPane(panPrincipal);
-
 		janela.setSize(500, 500);
 		janela.setVisible(true);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,6 +115,7 @@ public class VerObraForm implements ActionListener {
 		lblMaterial.setText(o.getMaterial());
 		lblDimensoes.setText(o.getDimensoes());
 		lblAno.setText(String.valueOf(o.getAno()));
+		lblimagem.setText(o.getImagem());
 	}
 
 	@Override
