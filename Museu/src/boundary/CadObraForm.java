@@ -108,7 +108,7 @@ public class CadObraForm implements ActionListener {
 		
 		janela.setSize(500, 500);
 		janela.setVisible(true);
-		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	public Obra formToObra() {

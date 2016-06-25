@@ -112,13 +112,15 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 			// abrir tela login
 	
 		} else if (e.getSource() == btnVerDetalhes) {
-			// abrir tela login
+			// pegar ID do item selecionado e enviar para a tela detalhes
+			new VerObraForm();
 	
 		} else if (e.getSource() == btnAlterar) {
 			// abrir tela login
 	
 		} else if (e.getSource() == btnExcluir) {
-			// abrir tela login
+			//long id = 
+			//control.excluir(id);
 	
 		}
 	}
