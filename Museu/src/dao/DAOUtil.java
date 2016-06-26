@@ -10,7 +10,7 @@ public class DAOUtil {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("Classe carregada");
-			String url = "jdbc:mysql://localhost:3306/os";
+			String url = "jdbc:mysql://localhost:3306/museu";
 			Connection con = DriverManager.getConnection(url, "root", "root");
 			return con;
 		} catch (ClassNotFoundException e) {
@@ -22,5 +22,7 @@ public class DAOUtil {
 		}
 		return null;
 	}
-
+	public static void main(String[] args) {
+		getConnection();
+	}
 }

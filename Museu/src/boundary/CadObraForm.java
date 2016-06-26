@@ -141,6 +141,7 @@ public class CadObraForm implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnAdicionar) {
 			control.adicionar(formToObra());
+			
 		} else if (e.getSource() == btnCancelar) {
 		 janela.dispose();
 		} else if (e.getSource() == btnUpload) {

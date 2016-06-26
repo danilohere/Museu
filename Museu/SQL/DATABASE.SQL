@@ -11,14 +11,14 @@ CREATE TABLE obra (
 	material varchar(50),
 	dimensoes varchar(20),
 	ano int,
-	imagem varchar(max));
+	imagem varchar(200));
 	
 CREATE TABLE autor (
 	id int primary key auto_increment,
 	nome varchar(50),
 	nasc date,
 	periodo varchar(20),
-	biografia varchar(max));
+	biografia varchar(200));
 	
 CREATE TABLE evento (
 	id int primary key auto_increment,

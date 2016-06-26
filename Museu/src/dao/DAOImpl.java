@@ -11,51 +11,40 @@ import entidade.Obra;
 
 public class DAOImpl implements DAO {
 
-	private List<Obra> lista = new ArrayList<Obra>();
+	private Connection con;
 
-	public void adicionar(Obra obra) {
-		lista.add(obra);
-		try {
-			Connection con = DAOUtil.getConnection();
-			String sql = "INSERT INTO obra VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setLong(1, 0);
-			pst.setString(2, obra.getNome());
-			pst.setString(3, obra.getAutor());
-			pst.setString(4, obra.getDescricao());
-			pst.setString(5, obra.getCategoria());
-			pst.setString(6, obra.getMaterial());
-			pst.setString(7, obra.getDimensoes());
-			pst.setInt(8, obra.getAno());
-			pst.setString(9, obra.getImagem());
-			pst.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public DAOImpl() {
+		con = DAOUtil.getConnection();
+	}
+
+	public void adicionar(Obra obra) throws SQLException {
+		String sql = "INSERT INTO obra VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		PreparedStatement pst = con.prepareStatement(sql);
+		pst.setLong(1, 0);
+		pst.setString(2, obra.getNome());
+		pst.setString(3, obra.getAutor());
+		pst.setString(4, obra.getDescricao());
+		pst.setString(5, obra.getCategoria());
+		pst.setString(6, obra.getMaterial());
+		pst.setString(7, obra.getDimensoes());
+		pst.setInt(8, obra.getAno());
+		pst.setString(9, obra.getImagem());
+		pst.executeUpdate();
 
 	}
 
-	public void excluir(long id) {
-		try {
-			Connection con = DAOUtil.getConnection();
-			String sql = "DELETE FROM obra WHERE id = ?";
-			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setLong(1, id);
-			pst.executeUpdate();
-			pst.close();
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+	public void excluir(long id) throws SQLException {
+		String sql = "DELETE FROM obra WHERE id = ?";
+		PreparedStatement pst = con.prepareStatement(sql);
+		pst.setLong(1, id);
+		pst.executeUpdate();
+		pst.close();
+		con.close();
 	}
 
-	public List<Obra> pesquisar(String nome) {
+	public List<Obra> pesquisar(String nome) throws SQLException {
 		List<Obra> resultados = new ArrayList<Obra>();
-		try {
-			Connection con = DAOUtil.getConnection();
+		
 			String sql = "SELECT * FROM obra WHERE nome like ? ";
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setString(1, "%" + nome + "%");
@@ -75,18 +64,13 @@ public class DAOImpl implements DAO {
 				o.setImagem(rs.getString("imagem"));
 				resultados.add(o);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		lista = resultados;
+		
 		return resultados;
 	}
 
-	public Obra pesquisarPorId(Long id) {
+	public Obra pesquisarPorId(Long id) throws SQLException {
 		Obra o = new Obra();
-		try {
-			Connection con = DAOUtil.getConnection();
+		
 			String sql = "SELECT * FROM obra WHERE id = ? ";
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setLong(1, id);
@@ -104,10 +88,7 @@ public class DAOImpl implements DAO {
 				o.setAno(rs.getInt("ano"));
 				o.setImagem(rs.getString("imagem"));
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		return o;
 	}
 
