@@ -11,7 +11,18 @@ CREATE TABLE obra (
 	material varchar(50),
 	dimensoes varchar(20),
 	ano int,
-	imagem varchar(200));
+	imagem longblob);
+	
+	INSERT INTO obra VALUES (null, 'Obra1', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra2', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra3', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra4', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra5', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra6', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra7', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra8', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra9', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra10', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
 	
 CREATE TABLE autor (
 	id int primary key auto_increment,

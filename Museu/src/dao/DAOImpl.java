@@ -39,7 +39,6 @@ public class DAOImpl implements DAO {
 		pst.setLong(1, id);
 		pst.executeUpdate();
 		pst.close();
-		con.close();
 	}
 
 	public List<Obra> pesquisar(String nome) throws SQLException {

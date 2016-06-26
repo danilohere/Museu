@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -34,8 +35,10 @@ public class VerObraForm implements ActionListener {
 	private JLabel lblmaterial = new JLabel("Material");
 	private JLabel lbldimensoes = new JLabel("Dimensões");
 	private JLabel lblano = new JLabel("Ano");
+	private long id;
 
-	public VerObraForm(long id) {
+	public VerObraForm(long id_obra) {
+		id = id_obra;
 		JPanel panPrincipal = new JPanel();
 		JPanel panFormulario = new JPanel();
 		panFormulario.setBounds(0, 90, 484, 371);
@@ -84,7 +87,7 @@ public class VerObraForm implements ActionListener {
 		panFormulario.add(lblimagem);
 		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
 		lblimagem.setBounds(250, 11, 224, 192);
-		
+
 		// PANLOGO
 		JPanel panLogo = new JPanel();
 		panLogo.setBounds(0, 0, 484, 90);
@@ -97,7 +100,7 @@ public class VerObraForm implements ActionListener {
 		lblano.setBounds(10, 246, 146, 23);
 		panFormulario.add(lblano);
 		panPrincipal.add(panLogo);
-		
+
 		Obra o = control.pesquisarPorId(id);
 		obraToForm(o);
 		janela.setTitle("Detalhes da Obra");
@@ -123,8 +126,13 @@ public class VerObraForm implements ActionListener {
 		if (e.getSource() == btnAlterar) {
 			// control.adicionar(formToObra());
 		} else if (e.getSource() == btnExcluir) {
-			// control.excluir(id);
-		}
+			int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir obra",
+					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+			if (i == JOptionPane.YES_OPTION) {
+				control.excluir(id);
+				janela.dispose();
+			}
 
+		}
 	}
 }

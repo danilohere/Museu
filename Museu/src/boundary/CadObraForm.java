@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -141,7 +142,8 @@ public class CadObraForm implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnAdicionar) {
 			control.adicionar(formToObra());
-			
+			JOptionPane.showConfirmDialog(null, "Obra adicionada");
+			janela.dispose();
 		} else if (e.getSource() == btnCancelar) {
 		 janela.dispose();
 		} else if (e.getSource() == btnUpload) {

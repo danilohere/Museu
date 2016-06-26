@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -28,7 +29,7 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 	private JButton btnAdicionar = new JButton("Adicionar");
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
-	private long id;
+	private long id = 0;
 
 	public MainPesq() {
 		JPanel panPrincipal = new JPanel();
@@ -88,6 +89,10 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 		janela.setSize(600, 500);
 		janela.setVisible(true);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		control.pesquisar(txtPesquisa.getText());
+		tabela.invalidate();
+		tabela.revalidate();
 	}
 
 	public static void main(String[] args) {
@@ -104,7 +109,7 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == btnPesquisar) {
-			List<Obra> lista = control.pesquisar(txtPesquisa.getText());
+			control.pesquisar(txtPesquisa.getText());
 			tabela.invalidate();
 			tabela.revalidate();
 		} else if (e.getSource() == btnAdicionar) {
@@ -114,15 +119,27 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 			// abrir tela login
 	
 		} else if (e.getSource() == btnVerDetalhes) {
-			id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0); 
-			new VerObraForm(id);
+			id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0);
+			if (id != 0){
+				new VerObraForm(id);
+			} else {
+				JOptionPane.showMessageDialog(null, "Selecione uma obra");
+			}
+			
 	
 		} else if (e.getSource() == btnAlterar) {
 			// abrir tela login
 	
 		} else if (e.getSource() == btnExcluir) {
-			id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0); 
-			control.excluir(id);
+			id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0);
+			int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir obra", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+			if(i == JOptionPane.YES_OPTION){
+				control.excluir(id);
+				control.pesquisar(txtPesquisa.getText());
+				tabela.invalidate();
+				tabela.revalidate();
+			}
+			
 		}
 	}
 

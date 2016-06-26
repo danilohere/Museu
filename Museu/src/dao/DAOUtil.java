@@ -22,7 +22,4 @@ public class DAOUtil {
 		}
 		return null;
 	}
-	public static void main(String[] args) {
-		getConnection();
-	}
 }
