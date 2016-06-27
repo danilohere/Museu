@@ -25,7 +25,7 @@ public class CadObraForm implements ActionListener {
 	private JTextField txtDimensoes = new JTextField();
 	private JTextField txtAno = new JTextField();
 	private JButton btnAdicionar = new JButton("Adicionar");
-	private JButton btnAlterar = new JButton("Adicionar");
+	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnCancelar = new JButton("Cancelar");
 	private JButton btnUpload = new JButton("Upload Imagem");
 	private ObraControl control = new ObraControl();

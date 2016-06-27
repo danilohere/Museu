@@ -9,11 +9,11 @@ import java.util.List;
 
 import entidade.Obra;
 
-public class DAOImpl implements DAO {
+public class DAOObraImpl implements DAOObra {
 
 	private Connection con;
 
-	public DAOImpl() {
+	public DAOObraImpl() {
 		con = DAOUtil.getConnection();
 	}
 

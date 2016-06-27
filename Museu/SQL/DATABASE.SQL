@@ -35,7 +35,7 @@ CREATE TABLE evento (
 	id int primary key auto_increment,
 	nome varchar(30),
 	datainicio date,
-	dataterm date,
+	dataenc date,
 	valortot float,
 	valormeia float,
 	qnting int

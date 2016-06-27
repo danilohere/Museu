@@ -7,22 +7,22 @@ import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import dao.DAOObraImpl;
-import entidade.Obra;
+import dao.DAOEventoImpl;
+import entidade.Evento;
 
-public class ObraControl implements TableModel {
+public class EventoControl implements TableModel {
 
-	private DAOObraImpl dao = new DAOObraImpl();
-	private List<Obra> lista = new ArrayList<Obra>();
+	private DAOEventoImpl dao = new DAOEventoImpl();
+	private List<Evento> lista = new ArrayList<Evento>();
 
-	public void adicionar(Obra obra) {
+	public void adicionar(Evento evento) {
 		try {
-			long id = obra.getId();
+			long id = evento.getId();
 			if (id != 0) {
-				dao.alterar(obra);
+				dao.alterar(evento);
 			} else {
-				dao.adicionar(obra);
-				lista.add(obra);
+				dao.adicionar(evento);
+				lista.add(evento);
 			}
 			
 		} catch (SQLException e) {
@@ -43,8 +43,8 @@ public class ObraControl implements TableModel {
 
 	}
 
-	public List<Obra> pesquisar(String nome) {
-		List<Obra> resultados = new ArrayList<Obra>();
+	public List<Evento> pesquisar(String nome) {
+		List<Evento> resultados = new ArrayList<Evento>();
 		try {
 			resultados = dao.pesquisar(nome);
 		} catch (SQLException e) {
@@ -55,22 +55,22 @@ public class ObraControl implements TableModel {
 		return resultados;
 	}
 
-	public Obra pesquisarPorId(Long id) {
-		Obra o = new Obra();
+	public Evento pesquisarPorId(Long id) {
+		Evento ev = new Evento();
 		try {
-			o = dao.pesquisarPorId(id);
+ 			ev = dao.pesquisarPorId(id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return o;
+		return ev;
 	}
 
-	public void setLista(List<Obra> lista) {
+	public void setLista(List<Evento> lista) {
 		this.lista = lista;
 	}
 
-	public List<Obra> getLista() {
+	public List<Evento> getLista() {
 		return lista;
 	}
 
@@ -81,18 +81,18 @@ public class ObraControl implements TableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 4;
+		return 3;
 	}
 
 	@Override
 	public String getColumnName(int columnIndex) {
-		String[] nomes = { "ID", "Nome", "Autor", "Descrição" };
+		String[] nomes = { "ID", "Nome", "Data de Início", "Data de Encerramento" };
 		return nomes[columnIndex];
 	}
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		Class<?>[] classes = { Long.class, String.class, String.class, String.class };
+		Class<?>[] classes = { Long.class, String.class, String.class };
 		return classes[columnIndex];
 	}
 
@@ -104,32 +104,30 @@ public class ObraControl implements TableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Obra o = lista.get(rowIndex);
+		Evento ev = lista.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			return o.getId();
+			return ev.getId();
 		case 1:
-			return o.getNome();
+			return ev.getDatainicio();
 		case 2:
-			return o.getAutor();
-		case 3:
-			return o.getDescricao();
+			return ev.getDataenc();
 		}
 		return "";
 	}
 
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		Obra o = lista.get(rowIndex);
+		Evento ev = lista.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			o.setId( (Long) aValue);
+			ev.setId( (Long) aValue);
 		case 1:
-			o.setNome((String) aValue);
+			ev.setNome((String) aValue);
 		case 2:
-			o.setAutor((String) aValue);
+//			ev.setDatainicio((String) aValue);
 		case 3:
-			o.setDescricao((String) aValue);
+//			ev.setDataenc((String) aValue);
 		}
 	}
 
@@ -144,5 +142,4 @@ public class ObraControl implements TableModel {
 		// TODO Auto-generated method stub
 
 	}
-
 }

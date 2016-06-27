@@ -7,22 +7,21 @@ import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import dao.DAOObraImpl;
-import entidade.Obra;
+import dao.DAOAutorImpl;
+import entidade.Autor;
 
-public class ObraControl implements TableModel {
+public class AutorControl implements TableModel {
+	private DAOAutorImpl dao = new DAOAutorImpl();
+	private List<Autor> lista = new ArrayList<Autor>();
 
-	private DAOObraImpl dao = new DAOObraImpl();
-	private List<Obra> lista = new ArrayList<Obra>();
-
-	public void adicionar(Obra obra) {
+	public void adicionar(Autor autor) {
 		try {
-			long id = obra.getId();
+			long id = autor.getId();
 			if (id != 0) {
-				dao.alterar(obra);
+				dao.alterar(autor);
 			} else {
-				dao.adicionar(obra);
-				lista.add(obra);
+				dao.adicionar(autor);
+				lista.add(autor);
 			}
 			
 		} catch (SQLException e) {
@@ -43,8 +42,8 @@ public class ObraControl implements TableModel {
 
 	}
 
-	public List<Obra> pesquisar(String nome) {
-		List<Obra> resultados = new ArrayList<Obra>();
+	public List<Autor> pesquisar(String nome) {
+		List<Autor> resultados = new ArrayList<Autor>();
 		try {
 			resultados = dao.pesquisar(nome);
 		} catch (SQLException e) {
@@ -55,22 +54,22 @@ public class ObraControl implements TableModel {
 		return resultados;
 	}
 
-	public Obra pesquisarPorId(Long id) {
-		Obra o = new Obra();
+	public Autor pesquisarPorId(Long id) {
+		Autor a = new Autor();
 		try {
-			o = dao.pesquisarPorId(id);
+			a = dao.pesquisarPorId(id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return o;
+		return a;
 	}
 
-	public void setLista(List<Obra> lista) {
+	public void setLista(List<Autor> lista) {
 		this.lista = lista;
 	}
 
-	public List<Obra> getLista() {
+	public List<Autor> getLista() {
 		return lista;
 	}
 
@@ -81,18 +80,18 @@ public class ObraControl implements TableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 4;
+		return 2;
 	}
 
 	@Override
 	public String getColumnName(int columnIndex) {
-		String[] nomes = { "ID", "Nome", "Autor", "Descrição" };
+		String[] nomes = { "ID", "Nome" };
 		return nomes[columnIndex];
 	}
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		Class<?>[] classes = { Long.class, String.class, String.class, String.class };
+		Class<?>[] classes = { Long.class, String.class };
 		return classes[columnIndex];
 	}
 
@@ -104,32 +103,24 @@ public class ObraControl implements TableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Obra o = lista.get(rowIndex);
+		Autor a = lista.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			return o.getId();
+			return a.getId();
 		case 1:
-			return o.getNome();
-		case 2:
-			return o.getAutor();
-		case 3:
-			return o.getDescricao();
+			return a.getNome();
 		}
 		return "";
 	}
 
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		Obra o = lista.get(rowIndex);
+		Autor a = lista.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			o.setId( (Long) aValue);
+			a.setId( (Long) aValue);
 		case 1:
-			o.setNome((String) aValue);
-		case 2:
-			o.setAutor((String) aValue);
-		case 3:
-			o.setDescricao((String) aValue);
+			a.setNome((String) aValue);
 		}
 	}
 
