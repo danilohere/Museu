@@ -32,6 +32,23 @@ public class DAOImpl implements DAO {
 		pst.executeUpdate();
 
 	}
+	
+	public void alterar(Obra obra) throws SQLException {
+		String sql = "UPDATE obra SET nome = ?, autor = ?, descricao = ?, categoria = ?, material = ?, dimensoes = ?,"
+				+ " ano = ?, imagem = ? WHERE id = ?";
+		PreparedStatement pst = con.prepareStatement(sql);
+		pst.setString(1, obra.getNome());
+		pst.setString(2, obra.getAutor());
+		pst.setString(3, obra.getDescricao());
+		pst.setString(4, obra.getCategoria());
+		pst.setString(5, obra.getMaterial());
+		pst.setString(6, obra.getDimensoes());
+		pst.setInt(7, obra.getAno());
+		pst.setString(8, obra.getImagem());
+		pst.setLong(9, obra.getId());
+		pst.executeUpdate();
+
+	}
 
 	public void excluir(long id) throws SQLException {
 		String sql = "DELETE FROM obra WHERE id = ?";

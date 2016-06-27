@@ -17,8 +17,14 @@ public class ObraControl implements TableModel {
 
 	public void adicionar(Obra obra) {
 		try {
-			dao.adicionar(obra);
-			lista.add(obra);
+			long id = obra.getId();
+			if (id != 0) {
+				dao.alterar(obra);
+			} else {
+				dao.adicionar(obra);
+				lista.add(obra);
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

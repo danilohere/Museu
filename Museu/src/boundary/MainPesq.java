@@ -29,32 +29,32 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 	private JButton btnAdicionar = new JButton("Adicionar");
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
-	private long id = 0;
+	private long id;
 
 	public MainPesq() {
 		JPanel panPrincipal = new JPanel();
 		JPanel panFormulario = new JPanel();
-		panFormulario.setBounds(0, 90, 584, 371);
+		panFormulario.setBounds(0, 90, 784, 471);
 		panFormulario.setLayout(null);
 		JLabel lblDigiteONome = new JLabel("Digite o Nome da Obra:");
-		lblDigiteONome.setBounds(32, 11, 146, 23);
+		lblDigiteONome.setBounds(100, 11, 146, 23);
 		panFormulario.add(lblDigiteONome);
-		txtPesquisa.setBounds(32, 34, 399, 23);
+		txtPesquisa.setBounds(100, 34, 475, 23);
 		panFormulario.add(txtPesquisa);
-		btnPesquisar.setBounds(445, 34, 100, 23);
+		btnPesquisar.setBounds(585, 34, 100, 23);
 		panFormulario.add(btnPesquisar);
 		btnPesquisar.addActionListener(this);
 		panPrincipal.setLayout(null);
 
 		// PANLOGO
 		JPanel panLogo = new JPanel();
-		panLogo.setBounds(0, 0, 584, 90);
+		panLogo.setBounds(0, 0, 784, 90);
 		panLogo.setLayout(null);
-		btnLogar.setBounds(528, 56, 46, 23);
+		btnLogar.setBounds(728, 56, 46, 23);
 		panLogo.add(btnLogar);
 		panPrincipal.add(panLogo);
 		JScrollPane panTable = new JScrollPane();
-		panTable.setBounds(0, 165, 584, 242);
+		panTable.setBounds(50, 165, 684, 330);
 		// FIM PANLOGO
 
 		tabela = new JTable(control);
@@ -63,33 +63,32 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 		panTable.setViewportView(tabela);
 
 		panPrincipal.add(panFormulario);
-		
-		
-		btnVerDetalhes.setBounds(35, 337, 120, 23);
+
+		btnVerDetalhes.setBounds(100, 427, 120, 23);
 		panFormulario.add(btnVerDetalhes);
 		btnVerDetalhes.addActionListener(this);
-		
-		
-		btnAdicionar.setBounds(165, 337, 120, 23);
+
+		btnAdicionar.setBounds(255, 427, 120, 23);
 		panFormulario.add(btnAdicionar);
 		btnAdicionar.addActionListener(this);
-		
-		btnAlterar.setBounds(295, 337, 120, 23);
+
+		btnAlterar.setBounds(410, 427, 120, 23);
 		panFormulario.add(btnAlterar);
 		btnAlterar.addActionListener(this);
-		
-		btnExcluir.setBounds(425, 337, 120, 23);
+
+		btnExcluir.setBounds(565, 427, 120, 23);
 		panFormulario.add(btnExcluir);
 		btnExcluir.addActionListener(this);
-		
+
 		janela.setTitle("Museu Digital");
 
 		janela.setContentPane(panPrincipal);
 
-		janela.setSize(600, 500);
+		janela.setSize(800, 600);
 		janela.setVisible(true);
+		janela.setLocationRelativeTo(null);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		control.pesquisar(txtPesquisa.getText());
 		tabela.invalidate();
 		tabela.revalidate();
@@ -101,8 +100,8 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-	//	int linha = tabela.getSelectedRow();
-	//	Obra o = control.getLista().get(linha);
+		// int linha = tabela.getSelectedRow();
+		// Obra o = control.getLista().get(linha);
 	}
 
 	@Override
@@ -113,33 +112,41 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 			tabela.invalidate();
 			tabela.revalidate();
 		} else if (e.getSource() == btnAdicionar) {
-			System.out.println("Botão Adicionar");
 			new CadObraForm();
-	    } else if (e.getSource() == btnLogar) {
+		} else if (e.getSource() == btnLogar) {
 			// abrir tela login
-	
+
 		} else if (e.getSource() == btnVerDetalhes) {
-			id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0);
-			if (id != 0){
+			try {
+				id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0);
 				new VerObraForm(id);
-			} else {
+			} catch (Exception e2) {
 				JOptionPane.showMessageDialog(null, "Selecione uma obra");
 			}
-			
-	
+
 		} else if (e.getSource() == btnAlterar) {
-			// abrir tela login
-	
-		} else if (e.getSource() == btnExcluir) {
-			id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0);
-			int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir obra", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-			if(i == JOptionPane.YES_OPTION){
-				control.excluir(id);
-				control.pesquisar(txtPesquisa.getText());
-				tabela.invalidate();
-				tabela.revalidate();
+			try {
+				id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0);
+				Obra o = control.pesquisarPorId(id);
+				new CadObraForm(o);
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(null, "Selecione uma obra");
 			}
-			
+		} else if (e.getSource() == btnExcluir) {
+			try {
+				id = (long) tabela.getValueAt(tabela.getSelectedRow(), 0);
+				int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir obra",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+				if (i == JOptionPane.YES_OPTION) {
+					control.excluir(id);
+					control.pesquisar(txtPesquisa.getText());
+					tabela.invalidate();
+					tabela.revalidate();
+				}
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(null, "Selecione uma obra");
+			}
+
 		}
 	}
 
