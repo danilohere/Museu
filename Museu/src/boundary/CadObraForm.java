@@ -1,8 +1,10 @@
 package boundary;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -45,22 +47,30 @@ public class CadObraForm implements ActionListener {
 		JPanel panPrincipal = new JPanel();
 		JPanel panFormulario = new JPanel();
 		panFormulario.setBounds(0, 90, 584, 371);
-		
 		panFormulario.setLayout(null);
 		panPrincipal.setLayout(null);
-				
-
+		
+		//PANLOGO
+		JPanel panLogo = new JPanel();
+		panLogo.setBounds(0, 0, 584, 90);
+		panLogo.setLayout(null);
+		panPrincipal.add(panLogo);
+		//FIM PANLOGO
+		
 		lblnome.setBounds(10, 7, 146, 23);
+		lblnome.setForeground(Color.WHITE);
 		panFormulario.add(lblnome);
 		txtNome.setBounds(91, 7, 230, 23);
 		panFormulario.add(txtNome);
 		
 		lblautor.setBounds(10, 41, 146, 23);
+		lblautor.setForeground(Color.WHITE);
 		panFormulario.add(lblautor);
 		txtAutor.setBounds(91, 41, 230, 23);
 		panFormulario.add(txtAutor);
 		
 		lbldesc.setBounds(10, 75, 146, 23);
+		lbldesc.setForeground(Color.WHITE);
 		panFormulario.add(lbldesc);
 		
 		txtDescricao.setTabSize(1);
@@ -72,22 +82,29 @@ public class CadObraForm implements ActionListener {
 		panFormulario.add(scroll);
 		
 		lblcat.setBounds(10, 144, 146, 23);
+		lblcat.setForeground(Color.WHITE);
 		panFormulario.add(lblcat);
 		txtCategoria.setBounds(91, 144, 230, 23);
 		panFormulario.add(txtCategoria);
 		
 		lblmaterial.setBounds(10, 178, 146, 23);
+		lblmaterial.setForeground(Color.WHITE);
 		panFormulario.add(lblmaterial);
 		txtMaterial.setBounds(91, 178, 230, 23);
 		panFormulario.add(txtMaterial);
 		
 		lbldimensoes.setBounds(10, 212, 146, 23);
+		lbldimensoes.setForeground(Color.WHITE);
 		panFormulario.add(lbldimensoes);
 		txtDimensoes.setBounds(91, 212, 230, 23);
 		panFormulario.add(txtDimensoes);
+		
+		lblano.setBounds(10, 246, 146, 23);
+		lblano.setForeground(Color.WHITE);
+		panFormulario.add(lblano);
 		txtAno.setBounds(91, 246, 87, 23);
 		panFormulario.add(txtAno);
-		
+				
 		btnAdicionar.setBounds(44, 311, 230, 23);
 		panFormulario.add(btnAdicionar);
 		btnAdicionar.addActionListener(this);
@@ -99,24 +116,24 @@ public class CadObraForm implements ActionListener {
 		panFormulario.add(lblimagem);
 		btnUpload.addActionListener(this);
 		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
+		lblimagem.setForeground(Color.WHITE);
 		lblimagem.setBounds(350, 11, 224, 192);
-		
-		//PANLOGO
-		JPanel panLogo = new JPanel();
-		panLogo.setBounds(0, 0, 584, 90);
-		panLogo.setLayout(null);
-		panPrincipal.add(panLogo);
-		//FIM PANLOGO
-		
+
 		panPrincipal.add(panFormulario);
-		
-		lblano.setBounds(10, 246, 146, 23);
-		panFormulario.add(lblano);
 		panPrincipal.add(panLogo);
-				
+		
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		JLabel background = new JLabel();
+		JLabel logo = new JLabel();
+		background.setIcon(bgimg);
+		background.setBounds(0, 0, 800, 700);
+		logo.setIcon(logoimg);
+		logo.setBounds(0, 0, 800, 90);
+		panFormulario.add(background);
+		panLogo.add(logo);
 
 		janela.setContentPane(panPrincipal);
-		
 		janela.setSize(600, 500);
 		janela.setVisible(true);
 		janela.setLocationRelativeTo(null);
@@ -130,59 +147,8 @@ public class CadObraForm implements ActionListener {
 		JPanel panPrincipal = new JPanel();
 		JPanel panFormulario = new JPanel();
 		panFormulario.setBounds(0, 90, 584, 371);
-		
 		panFormulario.setLayout(null);
 		panPrincipal.setLayout(null);
-				
-
-		lblnome.setBounds(10, 7, 146, 23);
-		panFormulario.add(lblnome);
-		txtNome.setBounds(91, 7, 230, 23);
-		panFormulario.add(txtNome);
-		
-		lblautor.setBounds(10, 41, 146, 23);
-		panFormulario.add(lblautor);
-		txtAutor.setBounds(91, 41, 230, 23);
-		panFormulario.add(txtAutor);
-		
-		lbldesc.setBounds(10, 75, 146, 23);
-		panFormulario.add(lbldesc);
-		txtDescricao.setTabSize(1);
-		txtDescricao.setBounds(91, 75, 230, 58);
-		panFormulario.add(txtDescricao);
-		
-		lblcat.setBounds(10, 144, 146, 23);
-		panFormulario.add(lblcat);
-		txtCategoria.setBounds(91, 144, 230, 23);
-		panFormulario.add(txtCategoria);
-		
-		lblmaterial.setBounds(10, 178, 146, 23);
-		panFormulario.add(lblmaterial);
-		txtMaterial.setBounds(91, 178, 230, 23);
-		panFormulario.add(txtMaterial);
-		
-		lbldimensoes.setBounds(10, 212, 146, 23);
-		panFormulario.add(lbldimensoes);
-		txtDimensoes.setBounds(91, 212, 230, 23);
-		panFormulario.add(txtDimensoes);
-		
-		lblano.setBounds(10, 246, 146, 23);
-		panFormulario.add(lblano);
-		txtAno.setBounds(91, 246, 87, 23);
-		panFormulario.add(txtAno);
-		
-		btnAlterar.setBounds(44, 311, 230, 23);
-		panFormulario.add(btnAlterar);
-		btnAlterar.addActionListener(this);
-		btnCancelar.setBounds(305, 311, 230, 23);
-		panFormulario.add(btnCancelar);
-		btnCancelar.addActionListener(this);
-		panFormulario.add(btnUpload);
-		btnUpload.setBounds(389, 212, 146, 23);
-		panFormulario.add(lblimagem);
-		btnUpload.addActionListener(this);
-		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
-		lblimagem.setBounds(350, 11, 224, 192);
 		
 		//PANLOGO
 		JPanel panLogo = new JPanel();
@@ -191,12 +157,83 @@ public class CadObraForm implements ActionListener {
 		panPrincipal.add(panLogo);
 		//FIM PANLOGO
 		
+		lblnome.setBounds(10, 7, 146, 23);
+		lblnome.setForeground(Color.WHITE);
+		panFormulario.add(lblnome);
+		txtNome.setBounds(91, 7, 230, 23);
+		panFormulario.add(txtNome);
+		
+		lblautor.setBounds(10, 41, 146, 23);
+		lblautor.setForeground(Color.WHITE);
+		panFormulario.add(lblautor);
+		txtAutor.setBounds(91, 41, 230, 23);
+		panFormulario.add(txtAutor);
+		
+		lbldesc.setBounds(10, 75, 146, 23);
+		lbldesc.setForeground(Color.WHITE);
+		panFormulario.add(lbldesc);
+		
+		txtDescricao.setTabSize(1);
+		txtDescricao.setLineWrap(true);
+		
+		JScrollPane scroll = new JScrollPane(txtDescricao);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scroll.setBounds(91, 75, 230, 58);
+		panFormulario.add(scroll);
+		
+		lblcat.setBounds(10, 144, 146, 23);
+		lblcat.setForeground(Color.WHITE);
+		panFormulario.add(lblcat);
+		txtCategoria.setBounds(91, 144, 230, 23);
+		panFormulario.add(txtCategoria);
+		
+		lblmaterial.setBounds(10, 178, 146, 23);
+		lblmaterial.setForeground(Color.WHITE);
+		panFormulario.add(lblmaterial);
+		txtMaterial.setBounds(91, 178, 230, 23);
+		panFormulario.add(txtMaterial);
+		
+		lbldimensoes.setBounds(10, 212, 146, 23);
+		lbldimensoes.setForeground(Color.WHITE);
+		panFormulario.add(lbldimensoes);
+		txtDimensoes.setBounds(91, 212, 230, 23);
+		panFormulario.add(txtDimensoes);
+		
+		lblano.setBounds(10, 246, 146, 23);
+		lblano.setForeground(Color.WHITE);
+		panFormulario.add(lblano);
+		txtAno.setBounds(91, 246, 87, 23);
+		panFormulario.add(txtAno);
+				
+		btnAdicionar.setBounds(44, 311, 230, 23);
+		panFormulario.add(btnAdicionar);
+		btnAdicionar.addActionListener(this);
+		btnCancelar.setBounds(305, 311, 230, 23);
+		panFormulario.add(btnCancelar);
+		btnCancelar.addActionListener(this);
+		panFormulario.add(btnUpload);
+		btnUpload.setBounds(389, 212, 146, 23);
+		panFormulario.add(lblimagem);
+		btnUpload.addActionListener(this);
+		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
+		lblimagem.setForeground(Color.WHITE);
+		lblimagem.setBounds(350, 11, 224, 192);
+
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
-				
+		
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		JLabel background = new JLabel();
+		JLabel logo = new JLabel();
+		background.setIcon(bgimg);
+		background.setBounds(0, 0, 800, 700);
+		logo.setIcon(logoimg);
+		logo.setBounds(0, 0, 800, 90);
+		panFormulario.add(background);
+		panLogo.add(logo);
 
 		janela.setContentPane(panPrincipal);
-		
 		janela.setSize(600, 500);
 		janela.setVisible(true);
 		janela.setLocationRelativeTo(null);

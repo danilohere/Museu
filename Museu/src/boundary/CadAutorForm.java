@@ -1,9 +1,11 @@
 package boundary;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -45,22 +47,26 @@ public class CadAutorForm implements ActionListener {
 					
 
 			lblnome.setBounds(10, 7, 146, 23);
+			lblnome.setForeground(Color.WHITE);
 			panFormulario.add(lblnome);
 			txtNome.setBounds(91, 7, 230, 23);
 			panFormulario.add(txtNome);
 			
 			lblnasc.setBounds(10, 41, 146, 23);
+			lblnasc.setForeground(Color.WHITE);
 			panFormulario.add(lblnasc);
 			txtNasc.setBounds(91, 41, 230, 23);
 			panFormulario.add(txtNasc);
 			
-			lblperiodo.setBounds(10, 144, 146, 23);
+			lblperiodo.setBounds(10, 75, 146, 23);
+			lblperiodo.setForeground(Color.WHITE);
 			panFormulario.add(lblperiodo);
-			txtPeriodo.setBounds(91, 144, 230, 23);
+			txtPeriodo.setBounds(91, 75, 230, 23);
 			panFormulario.add(txtPeriodo);
 			
 			
-			lblbio.setBounds(10, 75, 146, 23);
+			lblbio.setBounds(10, 109, 146, 23);
+			lblbio.setForeground(Color.WHITE);
 			panFormulario.add(lblbio);
 			
 			txtBiografia.setTabSize(1);
@@ -68,7 +74,7 @@ public class CadAutorForm implements ActionListener {
 			
 			JScrollPane scroll = new JScrollPane(txtBiografia);
 			scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-			scroll.setBounds(91, 75, 230, 58);
+			scroll.setBounds(91, 109, 230, 58);
 			panFormulario.add(scroll);
 			
 			
@@ -83,6 +89,7 @@ public class CadAutorForm implements ActionListener {
 			panFormulario.add(lblimagem);
 			btnUpload.addActionListener(this);
 			lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
+			lblimagem.setForeground(Color.WHITE);
 			lblimagem.setBounds(350, 11, 224, 192);
 			
 			//PANLOGO
@@ -93,6 +100,17 @@ public class CadAutorForm implements ActionListener {
 			//FIM PANLOGO
 			
 			panPrincipal.add(panFormulario);
+			
+			ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+			ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+			JLabel background = new JLabel();
+			JLabel logo = new JLabel();
+			background.setIcon(bgimg);
+			background.setBounds(0, 0, 800, 700);
+			logo.setIcon(logoimg);
+			logo.setBounds(0, 0, 800, 90);
+			panFormulario.add(background);
+			panLogo.add(logo);
 			
 			janela.setContentPane(panPrincipal);
 			
@@ -115,21 +133,26 @@ public class CadAutorForm implements ActionListener {
 					
 
 			lblnome.setBounds(10, 7, 146, 23);
+			lblnome.setForeground(Color.WHITE);
 			panFormulario.add(lblnome);
 			txtNome.setBounds(91, 7, 230, 23);
 			panFormulario.add(txtNome);
 			
 			lblnasc.setBounds(10, 41, 146, 23);
+			lblnasc.setForeground(Color.WHITE);
 			panFormulario.add(lblnasc);
 			txtNasc.setBounds(91, 41, 230, 23);
 			panFormulario.add(txtNasc);
 			
-			lblperiodo.setBounds(10, 144, 146, 23);
+			lblperiodo.setBounds(10, 75, 146, 23);
+			lblperiodo.setForeground(Color.WHITE);
 			panFormulario.add(lblperiodo);
-			txtPeriodo.setBounds(91, 144, 230, 23);
+			txtPeriodo.setBounds(91, 75, 230, 23);
 			panFormulario.add(txtPeriodo);
 			
-			lblbio.setBounds(10, 75, 146, 23);
+			
+			lblbio.setBounds(10, 109, 146, 23);
+			lblbio.setForeground(Color.WHITE);
 			panFormulario.add(lblbio);
 			
 			txtBiografia.setTabSize(1);
@@ -137,13 +160,13 @@ public class CadAutorForm implements ActionListener {
 			
 			JScrollPane scroll = new JScrollPane(txtBiografia);
 			scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-			scroll.setBounds(91, 75, 230, 58);
+			scroll.setBounds(91, 109, 230, 58);
 			panFormulario.add(scroll);
+			
 			
 			btnAdicionar.setBounds(44, 311, 230, 23);
 			panFormulario.add(btnAdicionar);
 			btnAdicionar.addActionListener(this);
-			
 			btnCancelar.setBounds(305, 311, 230, 23);
 			panFormulario.add(btnCancelar);
 			btnCancelar.addActionListener(this);
@@ -152,6 +175,7 @@ public class CadAutorForm implements ActionListener {
 			panFormulario.add(lblimagem);
 			btnUpload.addActionListener(this);
 			lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
+			lblimagem.setForeground(Color.WHITE);
 			lblimagem.setBounds(350, 11, 224, 192);
 			
 			//PANLOGO
@@ -162,6 +186,17 @@ public class CadAutorForm implements ActionListener {
 			//FIM PANLOGO
 			
 			panPrincipal.add(panFormulario);
+			
+			ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+			ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+			JLabel background = new JLabel();
+			JLabel logo = new JLabel();
+			background.setIcon(bgimg);
+			background.setBounds(0, 0, 800, 700);
+			logo.setIcon(logoimg);
+			logo.setBounds(0, 0, 800, 90);
+			panFormulario.add(background);
+			panLogo.add(logo);
 			
 			janela.setContentPane(panPrincipal);
 			

@@ -1,10 +1,12 @@
 package boundary;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,7 +35,7 @@ public class CadEventoForm implements ActionListener {
 	private JButton btnCancelar = new JButton("Cancelar");
 	private EventoControl control = new EventoControl();
 	private JLabel lblnome = new JLabel("Nome");
-	private JLabel lbldescricao = new JLabel("Data de Início");
+	private JLabel lbldescricao = new JLabel("Descrição");
 	private JLabel lbldatainicio = new JLabel("Data de Início");
 	private JLabel lbldataenc = new JLabel("Data de encerramento");
 	private JLabel lblvalortot = new JLabel("Valor Total do ingresso  R$");
@@ -50,11 +52,13 @@ public class CadEventoForm implements ActionListener {
 		panPrincipal.setLayout(null);
 
 		lblnome.setBounds(10, 7, 160, 23);
+		lblnome.setForeground(Color.WHITE);
 		panFormulario.add(lblnome);
 		txtNome.setBounds(170, 7, 230, 23);
 		panFormulario.add(txtNome);
 
 		lbldescricao.setBounds(10, 41, 160, 23);
+		lbldescricao.setForeground(Color.WHITE);
 		panFormulario.add(lbldescricao);
 		
 		txtDescricao.setTabSize(1);
@@ -66,26 +70,31 @@ public class CadEventoForm implements ActionListener {
 		panFormulario.add(scroll);
 
 		lbldatainicio.setBounds(10, 110, 160, 23);
+		lbldatainicio.setForeground(Color.WHITE);
 		panFormulario.add(lbldatainicio);
 		txtDatainicio.setBounds(170, 110, 87, 23);
 		panFormulario.add(txtDatainicio);
 
 		lbldataenc.setBounds(10, 144, 160, 23);
+		lbldataenc.setForeground(Color.WHITE);
 		panFormulario.add(lbldataenc);
 		txtDataenc.setBounds(170, 144, 87, 23);
 		panFormulario.add(txtDataenc);
 
 		lblvalortot.setBounds(10, 178, 160, 23);
+		lblvalortot.setForeground(Color.WHITE);
 		panFormulario.add(lblvalortot);
 		txtValortot.setBounds(170, 178, 87, 23);
 		panFormulario.add(txtValortot);
 
 		lblvalormeia.setBounds(10, 212, 160, 23);
+		lblvalormeia.setForeground(Color.WHITE);
 		panFormulario.add(lblvalormeia);
 		txtValormeia.setBounds(170, 212, 87, 23);
 		panFormulario.add(txtValormeia);
 
 		lblqnting.setBounds(10, 246, 160, 23);
+		lblqnting.setForeground(Color.WHITE);
 		panFormulario.add(lblqnting);
 		txtQnting.setBounds(170, 246, 87, 23);
 		panFormulario.add(txtQnting);
@@ -107,6 +116,17 @@ public class CadEventoForm implements ActionListener {
 
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
+		
+		ImageIcon bgimg = new ImageIcon("/Museu/img/background.png");
+		ImageIcon logoimg = new ImageIcon("/Museu/img/logo.png"); 
+		JLabel background = new JLabel();
+		JLabel logo = new JLabel();
+		background.setIcon(bgimg);
+		background.setBounds(0, 0, 800, 700);
+		logo.setIcon(logoimg);
+		logo.setBounds(0, 0, 800, 90);
+		panFormulario.add(background);
+		panLogo.add(logo);
 
 		janela.setContentPane(panPrincipal);
 		janela.setSize(450, 480);
@@ -127,11 +147,13 @@ public class CadEventoForm implements ActionListener {
 		panPrincipal.setLayout(null);
 
 		lblnome.setBounds(10, 7, 160, 23);
+		lblnome.setForeground(Color.WHITE);
 		panFormulario.add(lblnome);
 		txtNome.setBounds(170, 7, 230, 23);
 		panFormulario.add(txtNome);
 
 		lbldescricao.setBounds(10, 41, 160, 23);
+		lbldescricao.setForeground(Color.WHITE);
 		panFormulario.add(lbldescricao);
 		
 		txtDescricao.setTabSize(1);
@@ -143,26 +165,31 @@ public class CadEventoForm implements ActionListener {
 		panFormulario.add(scroll);
 
 		lbldatainicio.setBounds(10, 110, 160, 23);
+		lbldatainicio.setForeground(Color.WHITE);
 		panFormulario.add(lbldatainicio);
 		txtDatainicio.setBounds(170, 110, 87, 23);
 		panFormulario.add(txtDatainicio);
 
 		lbldataenc.setBounds(10, 144, 160, 23);
+		lbldataenc.setForeground(Color.WHITE);
 		panFormulario.add(lbldataenc);
 		txtDataenc.setBounds(170, 144, 87, 23);
 		panFormulario.add(txtDataenc);
 
 		lblvalortot.setBounds(10, 178, 160, 23);
+		lblvalortot.setForeground(Color.WHITE);
 		panFormulario.add(lblvalortot);
 		txtValortot.setBounds(170, 178, 87, 23);
 		panFormulario.add(txtValortot);
 
 		lblvalormeia.setBounds(10, 212, 160, 23);
+		lblvalormeia.setForeground(Color.WHITE);
 		panFormulario.add(lblvalormeia);
 		txtValormeia.setBounds(170, 212, 87, 23);
 		panFormulario.add(txtValormeia);
 
 		lblqnting.setBounds(10, 246, 160, 23);
+		lblqnting.setForeground(Color.WHITE);
 		panFormulario.add(lblqnting);
 		txtQnting.setBounds(170, 246, 87, 23);
 		panFormulario.add(txtQnting);
@@ -184,6 +211,17 @@ public class CadEventoForm implements ActionListener {
 
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
+		
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		JLabel background = new JLabel();
+		JLabel logo = new JLabel();
+		background.setIcon(bgimg);
+		background.setBounds(0, 0, 800, 700);
+		logo.setIcon(logoimg);
+		logo.setBounds(0, 0, 800, 90);
+		panFormulario.add(background);
+		panLogo.add(logo);
 
 		janela.setContentPane(panPrincipal);
 		janela.setSize(450, 480);

@@ -1,8 +1,10 @@
 package boundary;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -45,36 +47,51 @@ public class VerObraForm implements ActionListener {
 		panPrincipal.setLayout(null);
 
 		lblnome.setBounds(10, 7, 146, 23);
+		lblnome.setForeground(Color.WHITE);
 		panFormulario.add(lblnome);
 		lblNome.setBounds(91, 7, 230, 23);
+		lblNome.setForeground(Color.WHITE);
 		panFormulario.add(lblNome);
 
 		lblautor.setBounds(10, 41, 146, 23);
+		lblautor.setForeground(Color.WHITE);
 		panFormulario.add(lblautor);
 		lblAutor.setBounds(91, 41, 230, 23);
+		lblAutor.setForeground(Color.WHITE);
 		panFormulario.add(lblAutor);
 
 		lbldesc.setBounds(10, 75, 146, 23);
+		lbldesc.setForeground(Color.WHITE);
 		panFormulario.add(lbldesc);
 		txtDescricao.setEditable(false);
 		txtDescricao.setBounds(91, 75, 230, 58);
 		panFormulario.add(txtDescricao);
 
 		lblcat.setBounds(10, 144, 146, 23);
+		lblcat.setForeground(Color.WHITE);
 		panFormulario.add(lblcat);
 		lblCategoria.setBounds(91, 144, 230, 23);
+		lblCategoria.setForeground(Color.WHITE);
 		panFormulario.add(lblCategoria);
 
 		lblmaterial.setBounds(10, 178, 146, 23);
+		lblmaterial.setForeground(Color.WHITE);
 		panFormulario.add(lblmaterial);
 		lblMaterial.setBounds(91, 178, 230, 23);
+		lblMaterial.setForeground(Color.WHITE);
 		panFormulario.add(lblMaterial);
 
 		lbldimensoes.setBounds(10, 212, 146, 23);
+		lbldimensoes.setForeground(Color.WHITE);
 		panFormulario.add(lbldimensoes);
 		lblDimensoes.setBounds(91, 212, 230, 23);
+		lblDimensoes.setForeground(Color.WHITE);
 		panFormulario.add(lblDimensoes);
+		lblano.setForeground(Color.WHITE);
+		lblano.setBounds(10, 246, 146, 23);
+		panFormulario.add(lblano);
 		lblAno.setBounds(91, 246, 146, 23);
+		lblAno.setForeground(Color.WHITE);
 		panFormulario.add(lblAno);
 
 		btnAlterar.setBounds(44, 311, 230, 23);
@@ -94,10 +111,18 @@ public class VerObraForm implements ActionListener {
 		panPrincipal.add(panLogo);
 		// FIM PANLOGO
 
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		JLabel background = new JLabel();
+		JLabel logo = new JLabel();
+		background.setIcon(bgimg);
+		background.setBounds(0, 0, 800, 700);
+		logo.setIcon(logoimg);
+		logo.setBounds(0, 0, 800, 90);
+		panFormulario.add(background);
+		panLogo.add(logo);
+		
 		panPrincipal.add(panFormulario);
-
-		lblano.setBounds(10, 246, 146, 23);
-		panFormulario.add(lblano);
 		panPrincipal.add(panLogo);
 
 		Obra o = control.pesquisarPorId(id);

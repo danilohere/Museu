@@ -78,15 +78,9 @@ public class DAOAutorImpl implements DAOAutor {
 		ResultSet rs = pst.executeQuery();
 
 		while (rs.next()) {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			a.setId(rs.getLong("id"));
 			a.setNome(rs.getString("nome"));
-			try {
-				a.setNasc(sdf.parse(rs.getString("nasc")));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			a.setNasc(rs.getDate("nasc"));
 			a.setPeriodo(rs.getString("periodo"));
 			a.setBiografia(rs.getString("biografia"));
 			a.setImagem(rs.getString("imagem"));
@@ -97,8 +91,7 @@ public class DAOAutorImpl implements DAOAutor {
 
 	@Override
 	public void alterar(Autor a) throws SQLException {
-		String sql = "UPDATE autor SET nome = ?, autor = ?, descricao = ?, categoria = ?, material = ?, dimensoes = ?,"
-				+ " ano = ?, imagem = ? WHERE id = ?";
+		String sql = "UPDATE autor SET nome = ?, nasc = ?, periodo = ?, biografia = ?, imagem = ? WHERE id = ?";
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setString(1, a.getNome());
 		long numero = a.getNasc().getTime();

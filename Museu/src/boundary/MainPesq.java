@@ -1,9 +1,16 @@
 package boundary;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,7 +30,7 @@ import entidade.Autor;
 import entidade.Evento;
 import entidade.Obra;
 
-public class MainPesq implements ActionListener, ListSelectionListener {
+public class MainPesq implements ActionListener, ListSelectionListener  {
 	private ObraControl obraControl = new ObraControl();
 	private AutorControl autorControl = new AutorControl();
 	private EventoControl eventoControl = new EventoControl();
@@ -53,6 +60,7 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 		panFormulario.setBounds(0, 90, 784, 471);
 		panFormulario.setLayout(null);
 		JLabel lblDigiteONome = new JLabel("Digite o Nome da Obra:");
+		lblDigiteONome.setForeground(Color.WHITE);
 		lblDigiteONome.setBounds(100, 86, 146, 23);
 		panFormulario.add(lblDigiteONome);
 		txtPesquisa.setBounds(100, 104, 475, 23);
@@ -86,7 +94,7 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 		panTableEvento.setViewportView(tabelaEvento);
 		panTableAutor.setVisible(false);
 		panTableEvento.setVisible(false);
-
+		
 		panPrincipal.add(panFormulario);
 
 		btnVerDetalhes.setBounds(100, 427, 120, 23);
@@ -103,30 +111,45 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 
 		btnExcluir.setBounds(565, 427, 120, 23);
 		panFormulario.add(btnExcluir);
-
+		btnExcluir.addActionListener(this);
+		
+		rdbtnObras.setForeground(Color.WHITE);
 		rdbtnObras.setSelected(true);
 		rdbtnObras.setBounds(100, 31, 109, 23);
 		panFormulario.add(rdbtnObras);
 		rdbtnObras.addActionListener(this);
-
+		rdbtnObras.setBackground(new Color(0,0,0,0));
+		
+		rdbtnAutores.setForeground(Color.WHITE);
 		rdbtnAutores.setBounds(337, 31, 109, 23);
 		panFormulario.add(rdbtnAutores);
 		rdbtnAutores.addActionListener(this);
-
+		rdbtnAutores.setBackground(new Color(0,0,0,0));
+		
+		rdbtnEventos.setForeground(Color.WHITE);
 		rdbtnEventos.setBounds(585, 31, 109, 23);
 		panFormulario.add(rdbtnEventos);
 		rdbtnEventos.addActionListener(this);
+		rdbtnEventos.setBackground(new Color(0,0,0,0));
 
 		grupo.add(rdbtnObras);
 		grupo.add(rdbtnAutores);
 		grupo.add(rdbtnEventos);
-
-		btnExcluir.addActionListener(this);
-
+		
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		JLabel background = new JLabel();
+		JLabel logo = new JLabel();
+		background.setIcon(bgimg);
+		background.setBounds(0, 0, 800, 700);
+		logo.setIcon(logoimg);
+		logo.setBounds(0, 0, 800, 90);
+		panFormulario.add(background);
+		panLogo.add(logo);
+		
+		janela.setResizable(false);
 		janela.setTitle("Museu Digital");
-
 		janela.setContentPane(panPrincipal);
-
 		janela.setSize(800, 600);
 		janela.setVisible(true);
 		janela.setLocationRelativeTo(null);
