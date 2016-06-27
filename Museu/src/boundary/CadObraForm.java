@@ -8,8 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 import control.ObraControl;
 import entidade.Obra;
@@ -60,9 +62,14 @@ public class CadObraForm implements ActionListener {
 		
 		lbldesc.setBounds(10, 75, 146, 23);
 		panFormulario.add(lbldesc);
+		
 		txtDescricao.setTabSize(1);
-		txtDescricao.setBounds(91, 75, 230, 58);
-		panFormulario.add(txtDescricao);
+		txtDescricao.setLineWrap(true);
+		
+		JScrollPane scroll = new JScrollPane(txtDescricao);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scroll.setBounds(91, 75, 230, 58);
+		panFormulario.add(scroll);
 		
 		lblcat.setBounds(10, 144, 146, 23);
 		panFormulario.add(lblcat);
@@ -158,6 +165,9 @@ public class CadObraForm implements ActionListener {
 		panFormulario.add(lbldimensoes);
 		txtDimensoes.setBounds(91, 212, 230, 23);
 		panFormulario.add(txtDimensoes);
+		
+		lblano.setBounds(10, 246, 146, 23);
+		panFormulario.add(lblano);
 		txtAno.setBounds(91, 246, 87, 23);
 		panFormulario.add(txtAno);
 		
@@ -182,9 +192,6 @@ public class CadObraForm implements ActionListener {
 		//FIM PANLOGO
 		
 		panPrincipal.add(panFormulario);
-		
-		lblano.setBounds(10, 246, 146, 23);
-		panFormulario.add(lblano);
 		panPrincipal.add(panLogo);
 				
 

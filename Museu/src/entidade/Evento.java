@@ -5,6 +5,7 @@ import java.util.Date;
 public class Evento {
 	private long id;
 	private String nome;
+	private String descricao;
 	private Date datainicio;
 	private Date dataenc;
 	private float valortot;
@@ -22,6 +23,12 @@ public class Evento {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public Date getDatainicio() {
 		return datainicio;

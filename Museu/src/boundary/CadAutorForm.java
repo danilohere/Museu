@@ -9,12 +9,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 
 import control.AutorControl;
 import entidade.Autor;
-import javax.swing.SwingConstants;
 public class CadAutorForm implements ActionListener {
 		private JFrame janela = new JFrame("Cadastro de Autor");
 		private JTextField txtNome = new JTextField();
@@ -57,11 +59,18 @@ public class CadAutorForm implements ActionListener {
 			txtPeriodo.setBounds(91, 144, 230, 23);
 			panFormulario.add(txtPeriodo);
 			
+			
 			lblbio.setBounds(10, 75, 146, 23);
 			panFormulario.add(lblbio);
+			
 			txtBiografia.setTabSize(1);
-			txtBiografia.setBounds(91, 75, 230, 58);
-			panFormulario.add(txtBiografia);
+			txtBiografia.setLineWrap(true);
+			
+			JScrollPane scroll = new JScrollPane(txtBiografia);
+			scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+			scroll.setBounds(91, 75, 230, 58);
+			panFormulario.add(scroll);
+			
 			
 			btnAdicionar.setBounds(44, 311, 230, 23);
 			panFormulario.add(btnAdicionar);
@@ -122,13 +131,19 @@ public class CadAutorForm implements ActionListener {
 			
 			lblbio.setBounds(10, 75, 146, 23);
 			panFormulario.add(lblbio);
+			
 			txtBiografia.setTabSize(1);
-			txtBiografia.setBounds(91, 75, 230, 58);
-			panFormulario.add(txtBiografia);
+			txtBiografia.setLineWrap(true);
+			
+			JScrollPane scroll = new JScrollPane(txtBiografia);
+			scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+			scroll.setBounds(91, 75, 230, 58);
+			panFormulario.add(scroll);
 			
 			btnAdicionar.setBounds(44, 311, 230, 23);
 			panFormulario.add(btnAdicionar);
 			btnAdicionar.addActionListener(this);
+			
 			btnCancelar.setBounds(305, 311, 230, 23);
 			panFormulario.add(btnCancelar);
 			btnCancelar.addActionListener(this);

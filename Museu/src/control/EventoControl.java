@@ -1,6 +1,8 @@
 package control;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,12 +83,12 @@ public class EventoControl implements TableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 3;
+		return 4;
 	}
 
 	@Override
 	public String getColumnName(int columnIndex) {
-		String[] nomes = { "ID", "Nome", "Data de Início", "Data de Encerramento" };
+		String[] nomes = { "ID", "Nome", "Descrição", "Data de Início"};
 		return nomes[columnIndex];
 	}
 
@@ -109,9 +111,11 @@ public class EventoControl implements TableModel {
 		case 0:
 			return ev.getId();
 		case 1:
-			return ev.getDatainicio();
+			return ev.getNome();
 		case 2:
-			return ev.getDataenc();
+			return ev.getDescricao();
+		case 3:
+			return ev.getDatainicio();
 		}
 		return "";
 	}
@@ -119,27 +123,30 @@ public class EventoControl implements TableModel {
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Evento ev = lista.get(rowIndex);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		switch (columnIndex) {
 		case 0:
 			ev.setId( (Long) aValue);
 		case 1:
 			ev.setNome((String) aValue);
 		case 2:
-//			ev.setDatainicio((String) aValue);
+			ev.setDescricao((String) aValue);
 		case 3:
-//			ev.setDataenc((String) aValue);
+			try {
+				ev.setDatainicio(sdf.parse( (String) aValue));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
 	@Override
 	public void addTableModelListener(TableModelListener l) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void removeTableModelListener(TableModelListener l) {
-		// TODO Auto-generated method stub
 
 	}
 }

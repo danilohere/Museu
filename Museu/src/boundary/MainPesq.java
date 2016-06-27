@@ -9,25 +9,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.sun.glass.events.KeyEvent;
-
 import control.AutorControl;
 import control.EventoControl;
 import control.ObraControl;
+import entidade.Autor;
+import entidade.Evento;
 import entidade.Obra;
-import javax.swing.JRadioButton;
 
 public class MainPesq implements ActionListener, ListSelectionListener {
 	private ObraControl obraControl = new ObraControl();
 	private AutorControl autorControl = new AutorControl();
 	private EventoControl eventoControl = new EventoControl();
-	// private EventoControl eventoControl = new EventoControl();
 	private JFrame janela = new JFrame("Museu Digital");
 	private JTable tabelaObra;
 	private JTable tabelaAutor;
@@ -106,7 +105,6 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 		panFormulario.add(btnExcluir);
 
 		rdbtnObras.setSelected(true);
-		// rdbtnObras.setMnemonic(KeyEvent.VK_C);
 		rdbtnObras.setBounds(100, 31, 109, 23);
 		panFormulario.add(rdbtnObras);
 		rdbtnObras.addActionListener(this);
@@ -157,18 +155,22 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 				tabelaObra.invalidate();
 				tabelaObra.revalidate();
 			} else if (rdbtnAutores.isSelected()) {
-
+				autorControl.pesquisar(txtPesquisa.getText());
+				tabelaAutor.invalidate();
+				tabelaAutor.revalidate();
 			} else if (rdbtnEventos.isSelected()) {
-
+				eventoControl.pesquisar(txtPesquisa.getText());
+				tabelaEvento.invalidate();
+				tabelaEvento.revalidate();
 			}
 
 		} else if (e.getSource() == btnAdicionar) {
 			if (rdbtnObras.isSelected()) {
 				new CadObraForm();
 			} else if (rdbtnAutores.isSelected()) {
-
+				new CadAutorForm();
 			} else if (rdbtnEventos.isSelected()) {
-
+				new CadEventoForm();
 			}
 
 		} else if (e.getSource() == btnLogar) {
@@ -183,9 +185,19 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 					JOptionPane.showMessageDialog(null, "Selecione uma obra");
 				}
 			} else if (rdbtnAutores.isSelected()) {
-
+				try {
+					id = (long) tabelaAutor.getValueAt(tabelaAutor.getSelectedRow(), 0);
+					//new VerAutorForm(id);
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Selecione um autor");
+				}
 			} else if (rdbtnEventos.isSelected()) {
-
+				try {
+					id = (long) tabelaEvento.getValueAt(tabelaEvento.getSelectedRow(), 0);
+					//new VerEventoForm(id);
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Selecione um evento");
+				}
 			}
 
 		} else if (e.getSource() == btnAlterar) {
@@ -198,9 +210,21 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 					JOptionPane.showMessageDialog(null, "Selecione uma obra");
 				}
 			} else if (rdbtnAutores.isSelected()) {
-
+				try {
+					id = (long) tabelaAutor.getValueAt(tabelaAutor.getSelectedRow(), 0);
+					Autor a = autorControl.pesquisarPorId(id);
+					new CadAutorForm(a);
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Selecione um autor");
+				}
 			} else if (rdbtnEventos.isSelected()) {
-
+				try {
+					id = (long) tabelaEvento.getValueAt(tabelaEvento.getSelectedRow(), 0);
+					Evento ev = eventoControl.pesquisarPorId(id);
+					//new CadEventoForm(ev);
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Selecione um evento");
+				}
 			}
 
 		} else if (e.getSource() == btnExcluir) {
@@ -219,9 +243,33 @@ public class MainPesq implements ActionListener, ListSelectionListener {
 					JOptionPane.showMessageDialog(null, "Selecione uma obra");
 				}
 			} else if (rdbtnAutores.isSelected()) {
-
+				try {
+					id = (long) tabelaAutor.getValueAt(tabelaAutor.getSelectedRow(), 0);
+					int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir autor",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+					if (i == JOptionPane.YES_OPTION) {
+						autorControl.excluir(id);
+						autorControl.pesquisar(txtPesquisa.getText());
+						tabelaAutor.invalidate();
+						tabelaAutor.revalidate();
+					}
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Selecione um autor");
+				}
 			} else if (rdbtnEventos.isSelected()) {
-
+				try {
+					id = (long) tabelaEvento.getValueAt(tabelaEvento.getSelectedRow(), 0);
+					int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir evento",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+					if (i == JOptionPane.YES_OPTION) {
+						eventoControl.excluir(id);
+						eventoControl.pesquisar(txtPesquisa.getText());
+						tabelaEvento.invalidate();
+						tabelaEvento.revalidate();
+					}
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Selecione um evento");
+				}
 			}
 
 		} else if (e.getSource() == rdbtnAutores) {
