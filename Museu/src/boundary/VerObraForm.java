@@ -1,6 +1,7 @@
 package boundary;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,7 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import control.ObraControl;
-import entidade.Obra;
+import entity.Obra;
+
 import javax.swing.SwingConstants;
 
 public class VerObraForm implements ActionListener {
@@ -37,6 +39,7 @@ public class VerObraForm implements ActionListener {
 	private JLabel lbldimensoes = new JLabel("Dimensões");
 	private JLabel lblano = new JLabel("Ano");
 	private long id;
+	private int w, h;
 
 	public VerObraForm(long id_obra) {
 		id = id_obra;
@@ -111,8 +114,8 @@ public class VerObraForm implements ActionListener {
 		panPrincipal.add(panLogo);
 		// FIM PANLOGO
 
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -144,7 +147,27 @@ public class VerObraForm implements ActionListener {
 		lblMaterial.setText(o.getMaterial());
 		lblDimensoes.setText(o.getDimensoes());
 		lblAno.setText(String.valueOf(o.getAno()));
-		lblimagem.setText(o.getImagem());
+		ImageIcon icon = new ImageIcon(o.getImagem());
+		Image img = icon.getImage();
+		w = img.getWidth(null);
+		h = img.getHeight(null);
+		redimensionar(w, h);
+		Image newimg = img.getScaledInstance(w, h,  java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon = new ImageIcon(newimg);
+		lblimagem.setIcon(newIcon);
+	}
+	
+	public void redimensionar (int aw, int ah){
+		int dw, dh;
+		dw = aw - 224;
+		dh = ah - 192;
+		if (dw < dh){
+			h = 192;
+			w = aw-((dh * 224)/192);
+		} else {
+			w = 224;
+			h = ah-((dw * 192)/224);
+		}
 	}
 
 	@Override

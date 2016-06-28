@@ -1,4 +1,4 @@
-package entidade;
+package entity;
 
 import java.util.Date;
 
@@ -8,7 +8,6 @@ public class Autor {
 	private Date nasc;
 	private String periodo;
 	private String biografia;
-	private String imagem;
 
 	public long getId() {
 		return id;
@@ -48,14 +47,6 @@ public class Autor {
 
 	public void setBiografia(String biografia) {
 		this.biografia = biografia;
-	}
-
-	public String getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
 	}
 
 }

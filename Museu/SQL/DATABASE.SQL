@@ -11,32 +11,32 @@ CREATE TABLE obra (
 	material varchar(50),
 	dimensoes varchar(20),
 	ano int,
-	imagem longblob);
+	imagem varchar(255));
 	
-	INSERT INTO obra VALUES (null, 'Obra1', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
-	INSERT INTO obra VALUES (null, 'Obra2', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
-	INSERT INTO obra VALUES (null, 'Obra3', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
-	INSERT INTO obra VALUES (null, 'Obra4', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
-	INSERT INTO obra VALUES (null, 'Obra5', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
-	INSERT INTO obra VALUES (null, 'Obra6', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
-	INSERT INTO obra VALUES (null, 'Obra7', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
-	INSERT INTO obra VALUES (null, 'Obra8', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
-	INSERT INTO obra VALUES (null, 'Obra9', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
-	INSERT INTO obra VALUES (null, 'Obra10', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', null);
+	INSERT INTO obra VALUES (null, 'Obra1', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra2', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra3', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra4', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra5', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra6', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra7', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra8', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra9', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra10', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
+	INSERT INTO obra VALUES (null, 'Obra11', 'Autor1', 'Descrição', 'Categoria', 'Material1', '15 cm x 15 cm', '2016', 'C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\mona-lisa.jpg');
 	
 CREATE TABLE autor (
 	id int primary key auto_increment,
 	nome varchar(50),
 	nasc date,
 	periodo varchar(20),
-	biografia varchar(200),
-	imagem longblob);
+	biografia varchar(200));
 	
-	INSERT INTO autor VALUES (null, 'Autor1', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
-	INSERT INTO autor VALUES (null, 'Autor2', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
-	INSERT INTO autor VALUES (null, 'Autor3', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
-	INSERT INTO autor VALUES (null, 'Autor4', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
-	INSERT INTO autor VALUES (null, 'Autor5', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
+	INSERT INTO autor VALUES (null, 'Autor1', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum');
+	INSERT INTO autor VALUES (null, 'Autor2', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum');
+	INSERT INTO autor VALUES (null, 'Autor3', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum');
+	INSERT INTO autor VALUES (null, 'Autor4', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum');
+	INSERT INTO autor VALUES (null, 'Autor5', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum');
 	
 CREATE TABLE evento (
 	id int primary key auto_increment,

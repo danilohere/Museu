@@ -8,7 +8,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 import dao.DAOAutorImpl;
-import entidade.Autor;
+import entity.Autor;
 
 public class AutorControl implements TableModel {
 	private DAOAutorImpl dao = new DAOAutorImpl();
@@ -23,7 +23,7 @@ public class AutorControl implements TableModel {
 				dao.adicionar(autor);
 				lista.add(autor);
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -80,18 +80,18 @@ public class AutorControl implements TableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 2;
+		return 3;
 	}
 
 	@Override
 	public String getColumnName(int columnIndex) {
-		String[] nomes = { "ID", "Nome" };
+		String[] nomes = { "ID", "Nome", "Periodo artístico" };
 		return nomes[columnIndex];
 	}
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		Class<?>[] classes = { Long.class, String.class };
+		Class<?>[] classes = { Long.class, String.class, String.class };
 		return classes[columnIndex];
 	}
 
@@ -109,6 +109,8 @@ public class AutorControl implements TableModel {
 			return a.getId();
 		case 1:
 			return a.getNome();
+		case 2:
+			return a.getPeriodo();
 		}
 		return "";
 	}
@@ -118,9 +120,11 @@ public class AutorControl implements TableModel {
 		Autor a = lista.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			a.setId( (Long) aValue);
+			a.setId((Long) aValue);
 		case 1:
 			a.setNome((String) aValue);
+		case 2:
+			a.setPeriodo((String) aValue);
 		}
 	}
 

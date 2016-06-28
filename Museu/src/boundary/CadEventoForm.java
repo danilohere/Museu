@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 import control.EventoControl;
-import entidade.Evento;
+import entity.Evento;
 
 public class CadEventoForm implements ActionListener {
 
@@ -117,8 +117,8 @@ public class CadEventoForm implements ActionListener {
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 		
-		ImageIcon bgimg = new ImageIcon("/Museu/img/background.png");
-		ImageIcon logoimg = new ImageIcon("/Museu/img/logo.png"); 
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -212,8 +212,8 @@ public class CadEventoForm implements ActionListener {
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -223,6 +223,7 @@ public class CadEventoForm implements ActionListener {
 		panFormulario.add(background);
 		panLogo.add(logo);
 
+		janela.setResizable(false);
 		janela.setContentPane(panPrincipal);
 		janela.setSize(450, 480);
 		janela.setVisible(true);

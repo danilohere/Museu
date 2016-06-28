@@ -3,7 +3,7 @@ package dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import entidade.Autor;
+import entity.Autor;
 
 public interface DAOAutor {
 	public void adicionar(Autor a) throws SQLException;

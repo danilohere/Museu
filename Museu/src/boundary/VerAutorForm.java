@@ -17,7 +17,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import control.AutorControl;
-import entidade.Autor;
+import entity.Autor;
 
 public class VerAutorForm implements ActionListener {
 	private JFrame janela = new JFrame("Cadastro de Autor");
@@ -99,18 +99,21 @@ public class VerAutorForm implements ActionListener {
 
 		panPrincipal.add(panFormulario);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
 		background.setBounds(0, 0, 800, 700);
 		logo.setIcon(logoimg);
 		logo.setBounds(0, 0, 800, 90);
+		panFormulario.add(background);
+		panLogo.add(logo);
 
 		Autor a = control.pesquisarPorId(id);
 		autorToForm(a);
 		
+		janela.setResizable(false);
 		janela.setContentPane(panPrincipal);
 		janela.setSize(600, 500);
 		janela.setVisible(true);

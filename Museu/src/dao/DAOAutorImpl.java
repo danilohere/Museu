@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import entidade.Autor;
+import entity.Autor;
 
 public class DAOAutorImpl implements DAOAutor {
 
@@ -19,7 +19,7 @@ public class DAOAutorImpl implements DAOAutor {
 
 	@Override
 	public void adicionar(Autor a) throws SQLException {
-		String sql = "INSERT INTO autor VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO autor VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setLong(1, 0);
 		pst.setString(2, a.getNome());
@@ -28,7 +28,6 @@ public class DAOAutorImpl implements DAOAutor {
 		pst.setDate(3, d);
 		pst.setString(4, a.getPeriodo());
 		pst.setString(5, a.getBiografia());
-		pst.setString(6, a.getImagem());
 		pst.executeUpdate();		
 	}
 
@@ -49,7 +48,6 @@ public class DAOAutorImpl implements DAOAutor {
 			a.setNasc(rs.getDate("nasc"));
 			a.setPeriodo(rs.getString("periodo"));
 			a.setBiografia(rs.getString("biografia"));
-			a.setImagem(rs.getString("imagem"));
 			resultados.add(a);
 		}
 	
@@ -81,7 +79,6 @@ public class DAOAutorImpl implements DAOAutor {
 			a.setNasc(rs.getDate("nasc"));
 			a.setPeriodo(rs.getString("periodo"));
 			a.setBiografia(rs.getString("biografia"));
-			a.setImagem(rs.getString("imagem"));
 		}
 	
 	return a;
@@ -89,7 +86,7 @@ public class DAOAutorImpl implements DAOAutor {
 
 	@Override
 	public void alterar(Autor a) throws SQLException {
-		String sql = "UPDATE autor SET nome = ?, nasc = ?, periodo = ?, biografia = ?, imagem = ? WHERE id = ?";
+		String sql = "UPDATE autor SET nome = ?, nasc = ?, periodo = ?, biografia = ? WHERE id = ?";
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setString(1, a.getNome());
 		long numero = a.getNasc().getTime();
@@ -97,8 +94,7 @@ public class DAOAutorImpl implements DAOAutor {
 		pst.setDate(2, d);
 		pst.setString(3, a.getPeriodo());
 		pst.setString(4, a.getBiografia());
-		pst.setString(5, a.getImagem());
-		pst.setLong(6, a.getId());
+		pst.setLong(5, a.getId());
 		pst.executeUpdate();		
 	}
 

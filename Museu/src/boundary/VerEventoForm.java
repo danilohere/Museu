@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import control.EventoControl;
-import entidade.Evento;
+import entity.Evento;
 
 public class VerEventoForm implements ActionListener {
 	private JFrame janela = new JFrame("Cadastro de Evento");
@@ -120,18 +120,21 @@ public class VerEventoForm implements ActionListener {
 
 		panPrincipal.add(panFormulario);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
 		background.setBounds(0, 0, 800, 700);
 		logo.setIcon(logoimg);
 		logo.setBounds(0, 0, 800, 90);
+		panFormulario.add(background);
+		panLogo.add(logo);
 
 		Evento ev = control.pesquisarPorId(id);
 		eventoToForm(ev);
 		
+		janela.setResizable(false);
 		janela.setContentPane(panPrincipal);
 		janela.setSize(600, 500);
 		janela.setVisible(true);

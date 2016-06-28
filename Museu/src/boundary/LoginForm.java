@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import control.LoginControl;
-import entidade.Login;
+import entity.Login;
 
 import javax.swing.JPasswordField;
 
@@ -57,13 +57,13 @@ public class LoginForm implements ActionListener{
 		
 		panPrincipal.add(panFormulario);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
 		JLabel background = new JLabel();
 		background.setIcon(bgimg);
-		background.setBounds(0, 0, 230, 250);
+		background.setBounds(0, 0, 800, 700);
 		panFormulario.add(background);
-		janela.setResizable(false);
 		
+		janela.setResizable(false);
 		janela.setContentPane(panPrincipal);
 		janela.setSize(230, 250);
 		janela.setUndecorated(true);
@@ -79,8 +79,9 @@ public class LoginForm implements ActionListener{
 			String sen = String.valueOf(txtSenha.getPassword());
 			Login l = new Login();		
 			l = control.pesquisarPorId(usu);
+			
 			if (l.getUsuario() != null){
-				if (l.getSenha() == sen){
+				if (l.getSenha().equals(sen)){
 					logado = true;
 					JOptionPane.showMessageDialog(null, "Bem vindo "+l.getUsuario());
 					janela.dispose();

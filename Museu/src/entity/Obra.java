@@ -1,4 +1,4 @@
-package entidade;
+package entity;
 
 public class Obra {
 

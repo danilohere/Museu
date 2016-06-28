@@ -1,11 +1,19 @@
 package boundary;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,10 +22,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 
 import control.ObraControl;
-import entidade.Obra;
-import javax.swing.SwingConstants;
+import entity.Obra;
 
 public class CadObraForm implements ActionListener {
 	private JFrame janela = new JFrame("Cadastro de Obra");
@@ -42,6 +50,8 @@ public class CadObraForm implements ActionListener {
 	private JLabel lbldimensoes = new JLabel("Dimensões");
 	private JLabel lblano = new JLabel("Ano");
 	private long id;
+	private String img;
+	private int w, h;
 
 	public CadObraForm() {
 		JPanel panPrincipal = new JPanel();
@@ -122,8 +132,8 @@ public class CadObraForm implements ActionListener {
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -222,8 +232,8 @@ public class CadObraForm implements ActionListener {
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 		
-		ImageIcon bgimg = new ImageIcon(getClass().getResource("/img/background.png"));
-		ImageIcon logoimg = new ImageIcon(getClass().getResource("/img/logo.png")); 
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -233,6 +243,7 @@ public class CadObraForm implements ActionListener {
 		panFormulario.add(background);
 		panLogo.add(logo);
 
+		janela.setResizable(false);
 		janela.setContentPane(panPrincipal);
 		janela.setSize(600, 500);
 		janela.setVisible(true);
@@ -252,7 +263,7 @@ public class CadObraForm implements ActionListener {
 		o.setMaterial(txtMaterial.getText());
 		o.setDimensoes(txtDimensoes.getText());
 		o.setAno(Integer.parseInt(txtAno.getText()));
-		o.setImagem(lblimagem.getText());
+		o.setImagem(img);
 		return o;
 	}
 
@@ -266,7 +277,29 @@ public class CadObraForm implements ActionListener {
 		txtMaterial.setText(obra.getMaterial());
 		txtDimensoes.setText(obra.getDimensoes());
 		txtAno.setText(String.valueOf(obra.getAno()));
+		ImageIcon icon = new ImageIcon(obra.getImagem());
+		Image img = icon.getImage();
+		w = img.getWidth(null);
+		h = img.getHeight(null);
+		redimensionar(w, h);
+		Image newimg = img.getScaledInstance(w, h,  java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon = new ImageIcon(newimg);
+		lblimagem.setIcon(newIcon);
+		lblimagem.setText("");
 	}
+	
+	public static void copy(File origem, File destino) throws IOException {
+        InputStream in = new FileInputStream(origem);
+        OutputStream out = new FileOutputStream(destino);           
+        // Transferindo bytes de entrada para saída
+        byte[] buffer = new byte[1024];
+        int lenght;
+        while ((lenght= in.read(buffer)) > 0) {
+            out.write(buffer, 0, lenght);
+        }
+        in.close();
+        out.close();
+    }
 
 
 	@Override
@@ -282,8 +315,41 @@ public class CadObraForm implements ActionListener {
 		} else if (e.getSource() == btnCancelar) {
 		 janela.dispose();
 		} else if (e.getSource() == btnUpload) {
-			
+			JFileChooser c = new JFileChooser();
+			c.showOpenDialog(c);
+			File origem = c.getSelectedFile();
+			String path = ("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\"+origem.getName());
+			File destino = new File(path);
+			try {
+				copy(origem,destino);
+				img = path;
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			ImageIcon icon = new ImageIcon(path);
+			Image imagem = icon.getImage();
+			w = imagem.getWidth(null);
+			h = imagem.getHeight(null);
+			redimensionar(w, h);
+			Image newimg = imagem.getScaledInstance(w, h, java.awt.Image.SCALE_SMOOTH);
+			ImageIcon newIcon = new ImageIcon(newimg);
+			lblimagem.setText("");
+			lblimagem.setIcon(newIcon);
 		}
-
+		
+	}
+	
+	public void redimensionar (int aw, int ah){
+		int dw, dh;
+		dw = aw - 224;
+		dh = ah - 192;
+		if (dw < dh){
+			h = 192;
+			w = aw-((dh * 224)/192);
+		} else {
+			w = 224;
+			h = ah-((dw * 192)/224);
+		}
 	}
 }

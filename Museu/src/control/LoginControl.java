@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 
 import dao.DAOLoginImpl;
-import entidade.Login;
+import entity.Login;
 
 public class LoginControl {
 	

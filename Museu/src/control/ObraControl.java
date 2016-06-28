@@ -8,7 +8,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 import dao.DAOObraImpl;
-import entidade.Obra;
+import entity.Obra;
 
 public class ObraControl implements TableModel {
 

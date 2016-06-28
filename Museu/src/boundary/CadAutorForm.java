@@ -18,7 +18,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import control.AutorControl;
-import entidade.Autor;
+import entity.Autor;
 public class CadAutorForm implements ActionListener {
 		private JFrame janela = new JFrame("Cadastro de Autor");
 		private JTextField txtNome = new JTextField();
@@ -28,9 +28,7 @@ public class CadAutorForm implements ActionListener {
 		private JButton btnAdicionar = new JButton("Adicionar");
 		private JButton btnAlterar = new JButton("Alterar");
 		private JButton btnCancelar = new JButton("Cancelar");
-		private JButton btnUpload = new JButton("Upload Imagem");
 		private AutorControl control = new AutorControl();
-		private JLabel lblimagem = new JLabel("Imagem");
 		private	JLabel lblnome = new JLabel("Nome");
 		private JLabel lblnasc = new JLabel("Nascimento");
 		private JLabel lblperiodo = new JLabel("Período");
@@ -84,13 +82,6 @@ public class CadAutorForm implements ActionListener {
 			btnCancelar.setBounds(305, 311, 230, 23);
 			panFormulario.add(btnCancelar);
 			btnCancelar.addActionListener(this);
-			panFormulario.add(btnUpload);
-			btnUpload.setBounds(389, 212, 146, 23);
-			panFormulario.add(lblimagem);
-			btnUpload.addActionListener(this);
-			lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
-			lblimagem.setForeground(Color.WHITE);
-			lblimagem.setBounds(350, 11, 224, 192);
 			
 			//PANLOGO
 			JPanel panLogo = new JPanel();
@@ -101,8 +92,8 @@ public class CadAutorForm implements ActionListener {
 			
 			panPrincipal.add(panFormulario);
 			
-			ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
-			ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+			ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+			ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 			JLabel background = new JLabel();
 			JLabel logo = new JLabel();
 			background.setIcon(bgimg);
@@ -170,13 +161,6 @@ public class CadAutorForm implements ActionListener {
 			btnCancelar.setBounds(305, 311, 230, 23);
 			panFormulario.add(btnCancelar);
 			btnCancelar.addActionListener(this);
-			panFormulario.add(btnUpload);
-			btnUpload.setBounds(389, 212, 146, 23);
-			panFormulario.add(lblimagem);
-			btnUpload.addActionListener(this);
-			lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
-			lblimagem.setForeground(Color.WHITE);
-			lblimagem.setBounds(350, 11, 224, 192);
 			
 			//PANLOGO
 			JPanel panLogo = new JPanel();
@@ -187,8 +171,8 @@ public class CadAutorForm implements ActionListener {
 			
 			panPrincipal.add(panFormulario);
 			
-			ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
-			ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+			ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+			ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 			JLabel background = new JLabel();
 			JLabel logo = new JLabel();
 			background.setIcon(bgimg);
@@ -199,7 +183,7 @@ public class CadAutorForm implements ActionListener {
 			panLogo.add(logo);
 			
 			janela.setContentPane(panPrincipal);
-			
+			janela.setResizable(false);
 			janela.setSize(600, 500);
 			janela.setVisible(true);
 			janela.setLocationRelativeTo(null);
@@ -247,8 +231,6 @@ public class CadAutorForm implements ActionListener {
 				janela.dispose();
 			} else if (e.getSource() == btnCancelar) {
 			 janela.dispose();
-			} else if (e.getSource() == btnUpload) {
-				
 			}
 
 		}

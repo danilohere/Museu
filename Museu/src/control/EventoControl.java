@@ -2,8 +2,6 @@ package control;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 import dao.DAOEventoImpl;
-import entidade.Evento;
+import entity.Evento;
 
 public class EventoControl implements TableModel {
 

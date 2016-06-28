@@ -21,9 +21,9 @@ import javax.swing.event.ListSelectionListener;
 import control.AutorControl;
 import control.EventoControl;
 import control.ObraControl;
-import entidade.Autor;
-import entidade.Evento;
-import entidade.Obra;
+import entity.Autor;
+import entity.Evento;
+import entity.Obra;
 
 public class MainPesq implements ActionListener, ListSelectionListener  {
 	private ObraControl obraControl = new ObraControl();
@@ -35,7 +35,7 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 	private JTable tabelaEvento;
 	private JTextField txtPesquisa = new JTextField();
 	private JButton btnPesquisar = new JButton("Pesquisar");
-	private JButton btnLogar = new JButton("L");
+	private JButton btnLogar = new JButton();
 	private JButton btnVerDetalhes = new JButton("Ver detalhes");
 	private JButton btnAdicionar = new JButton("Adicionar");
 	private JButton btnAlterar = new JButton("Alterar");
@@ -71,7 +71,7 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		JPanel panLogo = new JPanel();
 		panLogo.setBounds(0, 0, 784, 90);
 		panLogo.setLayout(null);
-		btnLogar.setBounds(728, 56, 46, 23);
+		btnLogar.setBounds(740, 10, 30, 30);
 		btnLogar.addActionListener(this);
 		panLogo.add(btnLogar);
 		panPrincipal.add(panLogo);
@@ -84,6 +84,16 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		tabelaAutor = new JTable(autorControl);
 		tabelaEvento = new JTable(eventoControl);
 		tabelaObra.getSelectionModel().addListSelectionListener(this);
+		tabelaObra.getColumnModel().getColumn(0).setPreferredWidth(1);
+		tabelaObra.getColumnModel().getColumn(1).setPreferredWidth(100);
+		tabelaObra.getColumnModel().getColumn(3).setPreferredWidth(250);
+		tabelaAutor.getColumnModel().getColumn(0).setPreferredWidth(1);
+		tabelaAutor.getColumnModel().getColumn(1).setPreferredWidth(200);
+		tabelaAutor.getColumnModel().getColumn(2).setPreferredWidth(200);
+		tabelaEvento.getColumnModel().getColumn(0).setPreferredWidth(1);
+		tabelaEvento.getColumnModel().getColumn(1).setPreferredWidth(100);
+		tabelaEvento.getColumnModel().getColumn(2).setPreferredWidth(200);
+		tabelaEvento.getColumnModel().getColumn(3).setPreferredWidth(50);
 		panPrincipal.add(panTableObra);
 		panPrincipal.add(panTableAutor);
 		panPrincipal.add(panTableEvento);
@@ -109,10 +119,16 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		btnExcluir.setBounds(565, 427, 120, 23);
 		btnExcluir.addActionListener(this);
 		
+		ImageIcon loginimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\login.png");
+		ImageIcon logoffimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logoff.png"); 
+		
+		btnLogar.setIcon(loginimg);
+		
 		if(logado == true){
 			panFormulario.add(btnAdicionar);
 			panFormulario.add(btnAlterar);
 			panFormulario.add(btnExcluir);
+			btnLogar.setIcon(logoffimg);
 		}
 		rdbtnObras.setForeground(Color.WHITE);
 		rdbtnObras.setSelected(true);
@@ -147,11 +163,10 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		logo.setBounds(0, 0, 800, 90);
 		panFormulario.add(background);
 		panLogo.add(logo);
-		
 		janela.setResizable(false);
 		janela.setTitle("Museu Digital");
 		janela.setContentPane(panPrincipal);
-		janela.setSize(800, 600);
+		janela.setSize(790, 590);
 		janela.setVisible(true);
 		janela.setLocationRelativeTo(null);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -162,7 +177,7 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 	}
 
 	public static void main(String[] args) {
-		boolean log = false;
+		boolean log = true;
 		new MainPesq(log);
 	}
 

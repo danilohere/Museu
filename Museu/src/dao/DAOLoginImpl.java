@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import entidade.Login;
+import entity.Login;
 
 public class DAOLoginImpl implements DAOLogin{
 

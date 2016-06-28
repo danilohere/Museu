@@ -3,7 +3,7 @@ package dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import entidade.Evento;
+import entity.Evento;
 
 public interface DAOEvento {
 	public void adicionar(Evento ev) throws SQLException;
