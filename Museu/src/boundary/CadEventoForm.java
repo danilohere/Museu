@@ -256,10 +256,11 @@ public class CadEventoForm implements ActionListener {
 
 	private void eventoToForm(Evento ev) {
 		id = ev.getId();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		txtNome.setText(ev.getNome());
 		txtDescricao.setText(ev.getDescricao());
-		txtDatainicio.setText(String.valueOf(ev.getDatainicio()));
-		txtDataenc.setText(String.valueOf(ev.getDataenc()));
+		txtDatainicio.setText(sdf.format(ev.getDatainicio()));
+		txtDataenc.setText(sdf.format(ev.getDataenc()));
 		txtValortot.setText(String.valueOf(ev.getValortot()));
 		txtValormeia.setText(String.valueOf(ev.getValormeia()));
 		txtQnting.setText(String.valueOf(ev.getQnting()));

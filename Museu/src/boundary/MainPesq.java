@@ -136,8 +136,8 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		grupo.add(rdbtnAutores);
 		grupo.add(rdbtnEventos);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -210,14 +210,14 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 			} else if (rdbtnAutores.isSelected()) {
 				try {
 					id = (long) tabelaAutor.getValueAt(tabelaAutor.getSelectedRow(), 0);
-					//new VerAutorForm(id);
+					new VerAutorForm(id);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "Selecione um autor");
 				}
 			} else if (rdbtnEventos.isSelected()) {
 				try {
 					id = (long) tabelaEvento.getValueAt(tabelaEvento.getSelectedRow(), 0);
-					//new VerEventoForm(id);
+					new VerEventoForm(id);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "Selecione um evento");
 				}
@@ -244,7 +244,7 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 				try {
 					id = (long) tabelaEvento.getValueAt(tabelaEvento.getSelectedRow(), 0);
 					Evento ev = eventoControl.pesquisarPorId(id);
-					//new CadEventoForm(ev);
+					new CadEventoForm(ev);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "Selecione um evento");
 				}

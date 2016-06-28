@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,19 +21,20 @@ public class DAOEventoImpl implements DAOEvento{
 	
 	@Override
 	public void adicionar(Evento ev) throws SQLException {
-		String sql = "INSERT INTO evento VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO evento VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setLong(1, 0);
 		pst.setString(2, ev.getNome());
+		pst.setString(3, ev.getDescricao());
 		long dtini = ev.getDatainicio().getTime();
 		java.sql.Date d1 = new java.sql.Date(dtini);
-		pst.setDate(3, d1);
+		pst.setDate(4, d1);
 		long dtenc = ev.getDataenc().getTime();
 		java.sql.Date d2 = new java.sql.Date(dtenc);
-		pst.setDate(4, d2);
-		pst.setFloat(5, ev.getValortot());
-		pst.setFloat(6, ev.getValormeia());
-		pst.setInt(7, ev.getQnting());
+		pst.setDate(5, d2);
+		pst.setFloat(6, ev.getValortot());
+		pst.setFloat(7, ev.getValormeia());
+		pst.setInt(8, ev.getQnting());
 		pst.executeUpdate();				
 	}
 
@@ -50,6 +52,7 @@ public class DAOEventoImpl implements DAOEvento{
 			Evento ev = new Evento();
 			ev.setId(rs.getLong("id"));
 			ev.setNome(rs.getString("nome"));
+			ev.setDescricao(rs.getString("descricao"));
 			ev.setDatainicio(rs.getDate("datainicio"));
 			ev.setDataenc(rs.getDate("dataenc"));
 			ev.setValortot(rs.getFloat("valortot"));
@@ -74,15 +77,17 @@ public class DAOEventoImpl implements DAOEvento{
 	public Evento pesquisarPorId(Long id) throws SQLException {
 		Evento ev = new Evento();
 		
-		String sql = "SELECT * FROM autor WHERE id = ? ";
+		String sql = "SELECT * FROM evento WHERE id = ? ";
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setLong(1, id);
 
 		ResultSet rs = pst.executeQuery();
 
 		while (rs.next()) {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			ev.setId(rs.getLong("id"));
 			ev.setNome(rs.getString("nome"));
+			ev.setDescricao(rs.getString("descricao"));
 			ev.setDatainicio(rs.getDate("datainicio"));
 			ev.setDataenc(rs.getDate("dataenc"));
 			ev.setValortot(rs.getFloat("valortot"));

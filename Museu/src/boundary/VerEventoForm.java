@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,17 +22,22 @@ import entidade.Evento;
 public class VerEventoForm implements ActionListener {
 	private JFrame janela = new JFrame("Cadastro de Evento");
 	private JLabel lblNome = new JLabel();
-	private JLabel lblNasc = new JLabel();
-	private JLabel lblPeriodo = new JLabel();
-	private JTextArea txtBiografia = new JTextArea(1, 1);
+	private JTextArea txtDescricao = new JTextArea(1, 1);
+	private JLabel lblDatainicio = new JLabel();
+	private JLabel lblDataenc = new JLabel();
+	private JLabel lblValortot = new JLabel();
+	private JLabel lblValormeia = new JLabel();
+	private JLabel lblQnting = new JLabel();
 	private JButton btnAlterar = new JButton("Alterar");
 	private JButton btnExcluir = new JButton("Excluir");
 	private EventoControl control = new EventoControl();
-	private JLabel lblimagem = new JLabel("Imagem");
-	private JLabel lblnome = new JLabel("Nome");
-	private JLabel lblnasc = new JLabel("Nascimento");
-	private JLabel lblperiodo = new JLabel("Período");
-	private JLabel lblbio = new JLabel("Biografia");
+	private JLabel lblnome = new JLabel();
+	private JLabel lbldescricao = new JLabel();
+	private JLabel lbldatainicio = new JLabel();
+	private JLabel lbldataenc = new JLabel();
+	private JLabel lblvalortot = new JLabel();
+	private JLabel lblvalormeia = new JLabel();
+	private JLabel lblqnting = new JLabel();
 	private long id;
 
 	public VerEventoForm(long id_evento) {
@@ -51,39 +57,62 @@ public class VerEventoForm implements ActionListener {
 		lblNome.setForeground(Color.WHITE);
 		panFormulario.add(lblNome);
 
-		lblnasc.setBounds(10, 41, 146, 23);
-		lblnasc.setForeground(Color.WHITE);
-		panFormulario.add(lblnasc);
-		lblNasc.setBounds(91, 41, 230, 23);
-		lblNasc.setForeground(Color.WHITE);
-		panFormulario.add(lblNasc);
+		lbldescricao.setBounds(10, 41, 146, 23);
+		lbldescricao.setForeground(Color.WHITE);
+		panFormulario.add(lbldescricao);
+		txtDescricao.setTabSize(1);
+		txtDescricao.setLineWrap(true);
+		txtDescricao.setEditable(false);
 
-		lblperiodo.setBounds(10, 144, 146, 23);
-		lblperiodo.setForeground(Color.WHITE);
-		panFormulario.add(lblperiodo);
-		lblPeriodo.setBounds(91, 144, 230, 23);
-		lblPeriodo.setForeground(Color.WHITE);
-		panFormulario.add(lblPeriodo);
-
-		lblbio.setBounds(10, 75, 146, 23);
-		lblbio.setForeground(Color.WHITE);
-		panFormulario.add(lblbio);
-
-		txtBiografia.setTabSize(1);
-		txtBiografia.setLineWrap(true);
-
-		JScrollPane scroll = new JScrollPane(txtBiografia);
+		JScrollPane scroll = new JScrollPane(txtDescricao);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scroll.setBounds(91, 75, 230, 58);
+		scroll.setBounds(91, 41, 230, 58);
 		panFormulario.add(scroll);
 
+		
+		lbldatainicio.setBounds(10, 110, 146, 23);
+		lbldatainicio.setForeground(Color.WHITE);
+		panFormulario.add(lbldatainicio);
+		lblDatainicio.setBounds(91, 110, 230, 23);
+		lblDatainicio.setForeground(Color.WHITE);
+		panFormulario.add(lblDatainicio);
+
+		lbldataenc.setBounds(10, 144, 146, 23);
+		lbldataenc.setForeground(Color.WHITE);
+		panFormulario.add(lbldataenc);
+		lblDataenc.setBounds(91, 144, 230, 23);
+		lblDataenc.setForeground(Color.WHITE);
+		panFormulario.add(lblDataenc);
+
+		lblvalortot.setBounds(10, 178, 146, 23);
+		lblvalortot.setForeground(Color.WHITE);
+		panFormulario.add(lblvalortot);
+		lblValortot.setBounds(91, 178, 230, 23);
+		lblValortot.setForeground(Color.WHITE);
+		panFormulario.add(lblValortot);
+
+		lblvalormeia.setBounds(10, 212, 146, 23);
+		lblvalormeia.setForeground(Color.WHITE);
+		panFormulario.add(lblvalormeia);
+		lblValormeia.setBounds(91, 212, 230, 23);
+		lblValormeia.setForeground(Color.WHITE);
+		panFormulario.add(lblValormeia);
+		
+		lblqnting.setBounds(10, 212, 146, 23);
+		lblqnting.setForeground(Color.WHITE);
+		panFormulario.add(lblqnting);
+		lblQnting.setBounds(91, 212, 230, 23);
+		lblQnting.setForeground(Color.WHITE);
+		panFormulario.add(lblQnting);
+		
+		btnAlterar.setBounds(44, 311, 230, 23);
+		panFormulario.add(btnAlterar);
 		btnAlterar.addActionListener(this);
+		
 		btnExcluir.setBounds(320, 311, 230, 23);
 		panFormulario.add(btnExcluir);
 		btnExcluir.addActionListener(this);
-		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
-		lblimagem.setBounds(350, 11, 224, 192);
-
+		
 		// PANLOGO
 		JPanel panLogo = new JPanel();
 		panLogo.setBounds(0, 0, 584, 90);
@@ -92,6 +121,15 @@ public class VerEventoForm implements ActionListener {
 		// FIM PANLOGO
 
 		panPrincipal.add(panFormulario);
+		
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		JLabel background = new JLabel();
+		JLabel logo = new JLabel();
+		background.setIcon(bgimg);
+		background.setBounds(0, 0, 800, 700);
+		logo.setIcon(logoimg);
+		logo.setBounds(0, 0, 800, 90);
 
 		Evento ev = control.pesquisarPorId(id);
 		eventoToForm(ev);
@@ -107,9 +145,12 @@ public class VerEventoForm implements ActionListener {
 		id = ev.getId();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		lblNome.setText(ev.getNome());
-		//lblNasc.setText(sdf.format(ev.getNasc()));
-		//lblPeriodo.setText(ev.getPeriodo());
-		//txtBiografia.setText(ev.getBiografia());
+		txtDescricao.setText(ev.getDescricao());
+		lblDatainicio.setText(sdf.format(ev.getDatainicio()));
+		lblDataenc.setText(sdf.format(ev.getDataenc()));
+		lblValortot.setText(String.valueOf(ev.getValortot()));
+		lblValormeia.setText(String.valueOf(ev.getNome()));
+		lblQnting.setText(String.valueOf(ev.getNome()));
 	}
 
 	@Override
@@ -117,8 +158,9 @@ public class VerEventoForm implements ActionListener {
 		if (e.getSource() == btnAlterar) {
 			Evento ev = control.pesquisarPorId(id);
 			new CadEventoForm(ev);
+			janela.dispose();
 		} else if (e.getSource() == btnExcluir) {
-			int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir obra",
+			int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir evento",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 			if (i == JOptionPane.YES_OPTION) {
 				control.excluir(id);

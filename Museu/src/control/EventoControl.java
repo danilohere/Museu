@@ -1,5 +1,6 @@
 package control;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -94,7 +95,7 @@ public class EventoControl implements TableModel {
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		Class<?>[] classes = { Long.class, String.class, String.class };
+		Class<?>[] classes = { Long.class, String.class, String.class, Date.class };
 		return classes[columnIndex];
 	}
 
@@ -123,7 +124,6 @@ public class EventoControl implements TableModel {
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Evento ev = lista.get(rowIndex);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		switch (columnIndex) {
 		case 0:
 			ev.setId( (Long) aValue);
@@ -132,11 +132,7 @@ public class EventoControl implements TableModel {
 		case 2:
 			ev.setDescricao((String) aValue);
 		case 3:
-			try {
-				ev.setDatainicio(sdf.parse( (String) aValue));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			ev.setDatainicio((Date) aValue);
 		}
 	}
 

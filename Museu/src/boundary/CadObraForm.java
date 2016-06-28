@@ -222,8 +222,8 @@ public class CadObraForm implements ActionListener {
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon(getClass().getResource("/img/background.png"));
+		ImageIcon logoimg = new ImageIcon(getClass().getResource("/img/logo.png")); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);

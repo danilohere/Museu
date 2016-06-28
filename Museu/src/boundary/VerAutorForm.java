@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -71,16 +72,21 @@ public class VerAutorForm implements ActionListener {
 
 		txtBiografia.setTabSize(1);
 		txtBiografia.setLineWrap(true);
+		txtBiografia.setEditable(false);
 
 		JScrollPane scroll = new JScrollPane(txtBiografia);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scroll.setBounds(91, 75, 230, 58);
 		panFormulario.add(scroll);
 
+		btnAlterar.setBounds(44, 311, 230, 23);
+		panFormulario.add(btnAlterar);
 		btnAlterar.addActionListener(this);
+		
 		btnExcluir.setBounds(320, 311, 230, 23);
 		panFormulario.add(btnExcluir);
 		btnExcluir.addActionListener(this);
+		
 		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
 		lblimagem.setBounds(350, 11, 224, 192);
 
@@ -92,6 +98,15 @@ public class VerAutorForm implements ActionListener {
 		// FIM PANLOGO
 
 		panPrincipal.add(panFormulario);
+		
+		ImageIcon bgimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\background.png");
+		ImageIcon logoimg = new ImageIcon("C:\\Users\\Danilo\\git\\Museu\\img\\logo.png"); 
+		JLabel background = new JLabel();
+		JLabel logo = new JLabel();
+		background.setIcon(bgimg);
+		background.setBounds(0, 0, 800, 700);
+		logo.setIcon(logoimg);
+		logo.setBounds(0, 0, 800, 90);
 
 		Autor a = control.pesquisarPorId(id);
 		autorToForm(a);
@@ -117,6 +132,7 @@ public class VerAutorForm implements ActionListener {
 		if (e.getSource() == btnAlterar) {
 			Autor a = control.pesquisarPorId(id);
 			new CadAutorForm(a);
+			janela.dispose();
 		} else if (e.getSource() == btnExcluir) {
 			int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir obra",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);

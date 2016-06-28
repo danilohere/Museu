@@ -32,11 +32,11 @@ CREATE TABLE autor (
 	biografia varchar(200),
 	imagem longblob);
 	
-	INSERT INTO autor VALUES (null, 'Autor1', '01/03/1600', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
-	INSERT INTO autor VALUES (null, 'Autor2', '01/03/1600', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
-	INSERT INTO autor VALUES (null, 'Autor3', '01/03/1600', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
-	INSERT INTO autor VALUES (null, 'Autor4', '01/03/1600', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
-	INSERT INTO autor VALUES (null, 'Autor5', '01/03/1600', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
+	INSERT INTO autor VALUES (null, 'Autor1', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
+	INSERT INTO autor VALUES (null, 'Autor2', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
+	INSERT INTO autor VALUES (null, 'Autor3', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
+	INSERT INTO autor VALUES (null, 'Autor4', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
+	INSERT INTO autor VALUES (null, 'Autor5', '1600-01-01', 'Barroco', 'Um artista desconhecido por conta de seu nome nada comum', null);
 	
 CREATE TABLE evento (
 	id int primary key auto_increment,
@@ -48,8 +48,8 @@ CREATE TABLE evento (
 	valormeia float,
 	qnting int);
 	
-	INSERT INTO evento VALUES (null, 'Evento1', 'Descrição', '01/03/2016', '10/03/2016', '50,00', '25,00', '200');
-	INSERT INTO evento VALUES (null, 'Evento2', 'Descrição', '01/03/2016', '10/03/2016', '50,00', '25,00', '200');
-	INSERT INTO evento VALUES (null, 'Evento3', 'Descrição', '01/03/2016', '10/03/2016', '50,00', '25,00', '200');
-	INSERT INTO evento VALUES (null, 'Evento4', 'Descrição', '01/03/2016', '10/03/2016', '50,00', '25,00', '200');
-	INSERT INTO evento VALUES (null, 'Evento5', 'Descrição', '01/03/2016', '10/03/2016', '50,00', '25,00', '200');
+	INSERT INTO evento VALUES (null, 'Evento1', 'Descrição', '2016-03-01', '2016-03-10', '50.00', '25.00', '200');
+	INSERT INTO evento VALUES (null, 'Evento2', 'Descrição', '2016-03-01', '2016-03-10', '50.00', '25.00', '200');
+	INSERT INTO evento VALUES (null, 'Evento3', 'Descrição', '2016-03-01', '2016-03-10', '50.00', '25.00', '200');
+	INSERT INTO evento VALUES (null, 'Evento4', 'Descrição', '2016-03-01', '2016-03-10', '50.00', '25.00', '200');
+	INSERT INTO evento VALUES (null, 'Evento5', 'Descrição', '2016-03-01', '2016-03-10', '50.00', '25.00', '200');

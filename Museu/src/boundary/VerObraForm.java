@@ -152,6 +152,7 @@ public class VerObraForm implements ActionListener {
 		if (e.getSource() == btnAlterar) {
 			Obra o = control.pesquisarPorId(id);
 			new CadObraForm(o);
+			janela.dispose();
 		} else if (e.getSource() == btnExcluir) {
 			int i = JOptionPane.showOptionDialog(null, "Deseja mesmo excluir?", "Excluir obra",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
