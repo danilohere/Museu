@@ -84,7 +84,6 @@ public class DAOEventoImpl implements DAOEvento{
 		ResultSet rs = pst.executeQuery();
 
 		while (rs.next()) {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			ev.setId(rs.getLong("id"));
 			ev.setNome(rs.getString("nome"));
 			ev.setDescricao(rs.getString("descricao"));

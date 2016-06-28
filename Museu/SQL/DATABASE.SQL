@@ -53,3 +53,9 @@ CREATE TABLE evento (
 	INSERT INTO evento VALUES (null, 'Evento3', 'Descrição', '2016-03-01', '2016-03-10', '50.00', '25.00', '200');
 	INSERT INTO evento VALUES (null, 'Evento4', 'Descrição', '2016-03-01', '2016-03-10', '50.00', '25.00', '200');
 	INSERT INTO evento VALUES (null, 'Evento5', 'Descrição', '2016-03-01', '2016-03-10', '50.00', '25.00', '200');
+	
+CREATE TABLE login (
+	usuario varchar(30) primary key,
+	senha varchar(30));
+	
+	INSERT INTO login VALUES ('admin', '123');

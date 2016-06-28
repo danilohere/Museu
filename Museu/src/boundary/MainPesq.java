@@ -3,13 +3,8 @@ package boundary;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -52,9 +47,11 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 	private JScrollPane panTableObra = new JScrollPane();
 	private JScrollPane panTableAutor = new JScrollPane();
 	private JScrollPane panTableEvento = new JScrollPane();
+	private boolean logado = false; 
 	private long id;
 
-	public MainPesq() {
+	public MainPesq(boolean log) {
+		logado = log;
 		JPanel panPrincipal = new JPanel();
 		JPanel panFormulario = new JPanel();
 		panFormulario.setBounds(0, 90, 784, 471);
@@ -75,6 +72,7 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		panLogo.setBounds(0, 0, 784, 90);
 		panLogo.setLayout(null);
 		btnLogar.setBounds(728, 56, 46, 23);
+		btnLogar.addActionListener(this);
 		panLogo.add(btnLogar);
 		panPrincipal.add(panLogo);
 		// FIM PANLOGO
@@ -100,37 +98,40 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		btnVerDetalhes.setBounds(100, 427, 120, 23);
 		panFormulario.add(btnVerDetalhes);
 		btnVerDetalhes.addActionListener(this);
-
+		
+		
 		btnAdicionar.setBounds(255, 427, 120, 23);
-		panFormulario.add(btnAdicionar);
 		btnAdicionar.addActionListener(this);
 
 		btnAlterar.setBounds(410, 427, 120, 23);
-		panFormulario.add(btnAlterar);
 		btnAlterar.addActionListener(this);
-
+		
 		btnExcluir.setBounds(565, 427, 120, 23);
-		panFormulario.add(btnExcluir);
 		btnExcluir.addActionListener(this);
 		
+		if(logado == true){
+			panFormulario.add(btnAdicionar);
+			panFormulario.add(btnAlterar);
+			panFormulario.add(btnExcluir);
+		}
 		rdbtnObras.setForeground(Color.WHITE);
 		rdbtnObras.setSelected(true);
 		rdbtnObras.setBounds(100, 31, 109, 23);
 		panFormulario.add(rdbtnObras);
 		rdbtnObras.addActionListener(this);
-		rdbtnObras.setBackground(new Color(0,0,0,0));
+		rdbtnObras.setBackground(Color.DARK_GRAY);
 		
 		rdbtnAutores.setForeground(Color.WHITE);
 		rdbtnAutores.setBounds(337, 31, 109, 23);
 		panFormulario.add(rdbtnAutores);
 		rdbtnAutores.addActionListener(this);
-		rdbtnAutores.setBackground(new Color(0,0,0,0));
+		rdbtnAutores.setBackground(Color.DARK_GRAY);
 		
 		rdbtnEventos.setForeground(Color.WHITE);
 		rdbtnEventos.setBounds(585, 31, 109, 23);
 		panFormulario.add(rdbtnEventos);
 		rdbtnEventos.addActionListener(this);
-		rdbtnEventos.setBackground(new Color(0,0,0,0));
+		rdbtnEventos.setBackground(Color.DARK_GRAY);
 
 		grupo.add(rdbtnObras);
 		grupo.add(rdbtnAutores);
@@ -161,7 +162,8 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 	}
 
 	public static void main(String[] args) {
-		new MainPesq();
+		boolean log = false;
+		new MainPesq(log);
 	}
 
 	@Override
@@ -197,7 +199,18 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 			}
 
 		} else if (e.getSource() == btnLogar) {
-			// abrir tela login
+			if (logado == false){
+				janela.dispose();
+				new LoginForm();
+			} else {
+				int i = JOptionPane.showOptionDialog(null, "Efetuar logoff?", "Logoff",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+				if (i == JOptionPane.YES_OPTION) {
+					janela.dispose();
+					logado = false;
+					new MainPesq(logado);
+				}
+			}
 
 		} else if (e.getSource() == btnVerDetalhes) {
 			if (rdbtnObras.isSelected()) {
