@@ -33,6 +33,7 @@ public class CadAutorForm implements ActionListener {
 		private JLabel lblnasc = new JLabel("Nascimento");
 		private JLabel lblperiodo = new JLabel("Período");
 		private JLabel lblbio = new JLabel("Biografia");
+		private String path = System.getProperty("user.dir");
 		private long id;
 
 		public CadAutorForm() {
@@ -92,8 +93,8 @@ public class CadAutorForm implements ActionListener {
 			
 			panPrincipal.add(panFormulario);
 			
-			ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
-			ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
+			ImageIcon bgimg = new ImageIcon(path+"/img/background.png");
+			ImageIcon logoimg = new ImageIcon(path+"/img/logo.png"); 
 			JLabel background = new JLabel();
 			JLabel logo = new JLabel();
 			background.setIcon(bgimg);
@@ -171,8 +172,8 @@ public class CadAutorForm implements ActionListener {
 			
 			panPrincipal.add(panFormulario);
 			
-			ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
-			ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
+			ImageIcon bgimg = new ImageIcon(path+"/img/background.png");
+			ImageIcon logoimg = new ImageIcon(path+"/img/logo.png"); 
 			JLabel background = new JLabel();
 			JLabel logo = new JLabel();
 			background.setIcon(bgimg);

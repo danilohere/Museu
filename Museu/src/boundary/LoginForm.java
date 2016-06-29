@@ -26,6 +26,7 @@ public class LoginForm implements ActionListener{
 	private JButton btnAcessar = new JButton("Acessar");
 	private JButton btnVoltar = new JButton("Voltar");
 	private LoginControl control = new LoginControl();
+	private String path = System.getProperty("user.dir");
 	private boolean logado;
 
 	public LoginForm(){
@@ -57,7 +58,7 @@ public class LoginForm implements ActionListener{
 		
 		panPrincipal.add(panFormulario);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
+		ImageIcon bgimg = new ImageIcon(path+"/img/background.png");
 		JLabel background = new JLabel();
 		background.setIcon(bgimg);
 		background.setBounds(0, 0, 800, 700);

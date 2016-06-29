@@ -33,9 +33,10 @@ public class VerAutorForm implements ActionListener {
 	private JLabel lblnasc = new JLabel("Nascimento");
 	private JLabel lblperiodo = new JLabel("Período");
 	private JLabel lblbio = new JLabel("Biografia");
+	private String path = System.getProperty("user.dir");
 	private long id;
 
-	public VerAutorForm(long id_autor) {
+	public VerAutorForm(long id_autor, boolean logado) {
 		id = id_autor;
 
 		JPanel panPrincipal = new JPanel();
@@ -79,14 +80,15 @@ public class VerAutorForm implements ActionListener {
 		scroll.setBounds(91, 75, 230, 58);
 		panFormulario.add(scroll);
 
-		btnAlterar.setBounds(44, 311, 230, 23);
-		panFormulario.add(btnAlterar);
-		btnAlterar.addActionListener(this);
-		
-		btnExcluir.setBounds(320, 311, 230, 23);
-		panFormulario.add(btnExcluir);
-		btnExcluir.addActionListener(this);
-		
+		if (logado == true) {
+			btnAlterar.setBounds(44, 311, 230, 23);
+			panFormulario.add(btnAlterar);
+			btnAlterar.addActionListener(this);
+			btnExcluir.setBounds(320, 311, 230, 23);
+			panFormulario.add(btnExcluir);
+			btnExcluir.addActionListener(this);
+		}
+
 		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
 		lblimagem.setBounds(350, 11, 224, 192);
 
@@ -98,9 +100,9 @@ public class VerAutorForm implements ActionListener {
 		// FIM PANLOGO
 
 		panPrincipal.add(panFormulario);
-		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
+
+		ImageIcon bgimg = new ImageIcon(path + "/img/background.png");
+		ImageIcon logoimg = new ImageIcon(path + "/img/logo.png");
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -112,7 +114,7 @@ public class VerAutorForm implements ActionListener {
 
 		Autor a = control.pesquisarPorId(id);
 		autorToForm(a);
-		
+
 		janela.setResizable(false);
 		janela.setContentPane(panPrincipal);
 		janela.setSize(600, 500);
@@ -120,7 +122,7 @@ public class VerAutorForm implements ActionListener {
 		janela.setLocationRelativeTo(null);
 		janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
-	
+
 	private void autorToForm(Autor autor) {
 		id = autor.getId();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

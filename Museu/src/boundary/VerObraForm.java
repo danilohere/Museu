@@ -39,9 +39,10 @@ public class VerObraForm implements ActionListener {
 	private JLabel lbldimensoes = new JLabel("Dimensões");
 	private JLabel lblano = new JLabel("Ano");
 	private long id;
+	private String path = System.getProperty("user.dir");
 	private int w, h;
 
-	public VerObraForm(long id_obra) {
+	public VerObraForm(long id_obra, boolean logado) {
 		id = id_obra;
 		JPanel panPrincipal = new JPanel();
 		JPanel panFormulario = new JPanel();
@@ -97,12 +98,14 @@ public class VerObraForm implements ActionListener {
 		lblAno.setForeground(Color.WHITE);
 		panFormulario.add(lblAno);
 
-		btnAlterar.setBounds(44, 311, 230, 23);
-		panFormulario.add(btnAlterar);
-		btnAlterar.addActionListener(this);
-		btnExcluir.setBounds(320, 311, 230, 23);
-		panFormulario.add(btnExcluir);
-		btnExcluir.addActionListener(this);
+		if (logado == true) {
+			btnAlterar.setBounds(44, 311, 230, 23);
+			panFormulario.add(btnAlterar);
+			btnAlterar.addActionListener(this);
+			btnExcluir.setBounds(320, 311, 230, 23);
+			panFormulario.add(btnExcluir);
+			btnExcluir.addActionListener(this);
+		}
 		panFormulario.add(lblimagem);
 		lblimagem.setHorizontalAlignment(SwingConstants.CENTER);
 		lblimagem.setBounds(350, 11, 224, 192);
@@ -114,8 +117,8 @@ public class VerObraForm implements ActionListener {
 		panPrincipal.add(panLogo);
 		// FIM PANLOGO
 
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon(path + "/img/background.png");
+		ImageIcon logoimg = new ImageIcon(path + "/img/logo.png");
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -124,7 +127,7 @@ public class VerObraForm implements ActionListener {
 		logo.setBounds(0, 0, 800, 90);
 		panFormulario.add(background);
 		panLogo.add(logo);
-		
+
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 
@@ -152,21 +155,22 @@ public class VerObraForm implements ActionListener {
 		w = img.getWidth(null);
 		h = img.getHeight(null);
 		redimensionar(w, h);
-		Image newimg = img.getScaledInstance(w, h,  java.awt.Image.SCALE_SMOOTH);
+		Image newimg = img.getScaledInstance(w, h, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newIcon = new ImageIcon(newimg);
 		lblimagem.setIcon(newIcon);
+		lblimagem.setText("");
 	}
-	
-	public void redimensionar (int aw, int ah){
+
+	public void redimensionar(int aw, int ah) {
 		int dw, dh;
 		dw = aw - 224;
 		dh = ah - 192;
-		if (dw < dh){
+		if (dw < dh) {
 			h = 192;
-			w = aw-((dh * 224)/192);
+			w = aw - ((dh * 224) / 192);
 		} else {
 			w = 224;
-			h = ah-((dw * 192)/224);
+			h = ah - ((dw * 192) / 224);
 		}
 	}
 

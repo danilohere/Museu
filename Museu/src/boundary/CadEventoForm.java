@@ -41,6 +41,7 @@ public class CadEventoForm implements ActionListener {
 	private JLabel lblvalortot = new JLabel("Valor Total do ingresso  R$");
 	private JLabel lblvalormeia = new JLabel("Valor da meia entrada    R$");
 	private JLabel lblqnting = new JLabel("Quantidade de ingressos");
+	private String path = System.getProperty("user.dir");
 	private long id;
 
 	public CadEventoForm() {
@@ -117,8 +118,8 @@ public class CadEventoForm implements ActionListener {
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon(path+"/img/background.png");
+		ImageIcon logoimg = new ImageIcon(path+"/img/logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -212,8 +213,8 @@ public class CadEventoForm implements ActionListener {
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon(path+"/img/background.png");
+		ImageIcon logoimg = new ImageIcon(path+"/img/logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);

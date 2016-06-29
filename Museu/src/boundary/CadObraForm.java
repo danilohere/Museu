@@ -49,6 +49,7 @@ public class CadObraForm implements ActionListener {
 	private JLabel lblmaterial = new JLabel("Material");
 	private JLabel lbldimensoes = new JLabel("Dimensões");
 	private JLabel lblano = new JLabel("Ano");
+	private String path = System.getProperty("user.dir");
 	private long id;
 	private String img;
 	private int w, h;
@@ -132,8 +133,8 @@ public class CadObraForm implements ActionListener {
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon(path+"/img/background.png");
+		ImageIcon logoimg = new ImageIcon(path+"/img/logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -232,8 +233,8 @@ public class CadObraForm implements ActionListener {
 		panPrincipal.add(panFormulario);
 		panPrincipal.add(panLogo);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon(path+"/img/background.png");
+		ImageIcon logoimg = new ImageIcon(path+"/img/logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -318,16 +319,16 @@ public class CadObraForm implements ActionListener {
 			JFileChooser c = new JFileChooser();
 			c.showOpenDialog(c);
 			File origem = c.getSelectedFile();
-			String path = ("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\Obras\\"+origem.getName());
-			File destino = new File(path);
+			String or = (path+"/img/Obras/"+origem.getName());
+			File destino = new File(or);
 			try {
 				copy(origem,destino);
-				img = path;
+				img = or;
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			ImageIcon icon = new ImageIcon(path);
+			ImageIcon icon = new ImageIcon(or);
 			Image imagem = icon.getImage();
 			w = imagem.getWidth(null);
 			h = imagem.getHeight(null);

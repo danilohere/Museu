@@ -48,6 +48,7 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 	private JScrollPane panTableAutor = new JScrollPane();
 	private JScrollPane panTableEvento = new JScrollPane();
 	private boolean logado = false; 
+	private String path = System.getProperty("user.dir");
 	private long id;
 
 	public MainPesq(boolean log) {
@@ -119,8 +120,8 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		btnExcluir.setBounds(565, 427, 120, 23);
 		btnExcluir.addActionListener(this);
 		
-		ImageIcon loginimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\login.png");
-		ImageIcon logoffimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logoff.png"); 
+		ImageIcon loginimg = new ImageIcon(path+"/img/login.png");
+		ImageIcon logoffimg = new ImageIcon(path+"/img/logoff.png"); 
 		
 		btnLogar.setIcon(loginimg);
 		
@@ -153,8 +154,8 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		grupo.add(rdbtnAutores);
 		grupo.add(rdbtnEventos);
 		
-		ImageIcon bgimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\background.png");
-		ImageIcon logoimg = new ImageIcon("C:\\Users\\Priscila\\git\\Museu\\Museu\\img\\logo.png"); 
+		ImageIcon bgimg = new ImageIcon(path+"/img/background.png");
+		ImageIcon logoimg = new ImageIcon(path+"/img/logo.png"); 
 		JLabel background = new JLabel();
 		JLabel logo = new JLabel();
 		background.setIcon(bgimg);
@@ -231,21 +232,21 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 			if (rdbtnObras.isSelected()) {
 				try {
 					id = (long) tabelaObra.getValueAt(tabelaObra.getSelectedRow(), 0);
-					new VerObraForm(id);
+					new VerObraForm(id, logado);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "Selecione uma obra");
 				}
 			} else if (rdbtnAutores.isSelected()) {
 				try {
 					id = (long) tabelaAutor.getValueAt(tabelaAutor.getSelectedRow(), 0);
-					new VerAutorForm(id);
+					new VerAutorForm(id, logado);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "Selecione um autor");
 				}
 			} else if (rdbtnEventos.isSelected()) {
 				try {
 					id = (long) tabelaEvento.getValueAt(tabelaEvento.getSelectedRow(), 0);
-					new VerEventoForm(id);
+					new VerEventoForm(id, logado);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "Selecione um evento");
 				}
