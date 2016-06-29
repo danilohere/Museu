@@ -114,7 +114,6 @@ public class CadAutorForm implements ActionListener {
 		
 		public CadAutorForm(Autor autor) {
 			janela.setTitle("Alterar Autor");
-			btnAdicionar.setText("Alterar");
 			
 			JPanel panPrincipal = new JPanel();
 			JPanel panFormulario = new JPanel();
@@ -156,9 +155,9 @@ public class CadAutorForm implements ActionListener {
 			panFormulario.add(scroll);
 			
 			
-			btnAdicionar.setBounds(44, 311, 230, 23);
-			panFormulario.add(btnAdicionar);
-			btnAdicionar.addActionListener(this);
+			btnAlterar.setBounds(44, 311, 230, 23);
+			panFormulario.add(btnAlterar);
+			btnAlterar.addActionListener(this);
 			btnCancelar.setBounds(305, 311, 230, 23);
 			panFormulario.add(btnCancelar);
 			btnCancelar.addActionListener(this);
@@ -224,11 +223,11 @@ public class CadAutorForm implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == btnAdicionar) {
 				control.adicionar(formToAutor());
-				JOptionPane.showMessageDialog(null, "Autor adicionada");
+				JOptionPane.showMessageDialog(null, "Autor adicionado");
 				janela.dispose();
 			} else if (e.getSource() == btnAlterar) {
 				control.adicionar(formToAutor());
-				JOptionPane.showMessageDialog(null, "Autor alterada");
+				JOptionPane.showMessageDialog(null, "Autor alterado");
 				janela.dispose();
 			} else if (e.getSource() == btnCancelar) {
 			 janela.dispose();

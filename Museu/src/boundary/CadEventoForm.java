@@ -138,7 +138,6 @@ public class CadEventoForm implements ActionListener {
 
 	public CadEventoForm(Evento ev) {
 		janela.setTitle("Alterar Evento");
-		btnAdicionar.setText("Alterar");
 
 		JPanel panPrincipal = new JPanel();
 		JPanel panFormulario = new JPanel();
@@ -195,9 +194,9 @@ public class CadEventoForm implements ActionListener {
 		txtQnting.setBounds(170, 246, 87, 23);
 		panFormulario.add(txtQnting);
 
-		btnAdicionar.setBounds(10, 290, 200, 23);
-		panFormulario.add(btnAdicionar);
-		btnAdicionar.addActionListener(this);
+		btnAlterar.setBounds(10, 290, 200, 23);
+		panFormulario.add(btnAlterar);
+		btnAlterar.addActionListener(this);
 		
 		btnCancelar.setBounds(220, 290, 200, 23);
 		panFormulario.add(btnCancelar);

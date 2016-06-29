@@ -153,7 +153,6 @@ public class CadObraForm implements ActionListener {
 	
 	public CadObraForm(Obra obra) {
 		janela.setTitle("Alterar Obra");
-		btnAdicionar.setText("Alterar");
 		
 		JPanel panPrincipal = new JPanel();
 		JPanel panFormulario = new JPanel();
@@ -216,9 +215,9 @@ public class CadObraForm implements ActionListener {
 		txtAno.setBounds(91, 246, 87, 23);
 		panFormulario.add(txtAno);
 				
-		btnAdicionar.setBounds(44, 311, 230, 23);
-		panFormulario.add(btnAdicionar);
-		btnAdicionar.addActionListener(this);
+		btnAlterar.setBounds(44, 311, 230, 23);
+		panFormulario.add(btnAlterar);
+		btnAlterar.addActionListener(this);
 		btnCancelar.setBounds(305, 311, 230, 23);
 		panFormulario.add(btnCancelar);
 		btnCancelar.addActionListener(this);
