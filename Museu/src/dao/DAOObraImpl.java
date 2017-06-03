@@ -18,17 +18,17 @@ public class DAOObraImpl implements DAOObra {
 	}
 
 	public void adicionar(Obra obra) throws SQLException {
-		String sql = "INSERT INTO obra VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO obra (id, nome, autor, descricao, categoria, material, dimensoes, ano, imagem) "
+				+ "VALUES (sq_obra.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pst = con.prepareStatement(sql);
-		pst.setLong(1, 0);
-		pst.setString(2, obra.getNome());
-		pst.setString(3, obra.getAutor());
-		pst.setString(4, obra.getDescricao());
-		pst.setString(5, obra.getCategoria());
-		pst.setString(6, obra.getMaterial());
-		pst.setString(7, obra.getDimensoes());
-		pst.setInt(8, obra.getAno());
-		pst.setString(9, obra.getImagem());
+		pst.setString(1, obra.getNome());
+		pst.setString(2, obra.getAutor());
+		pst.setString(3, obra.getDescricao());
+		pst.setString(4, obra.getCategoria());
+		pst.setString(5, obra.getMaterial());
+		pst.setString(6, obra.getDimensoes());
+		pst.setInt(7, obra.getAno());
+		pst.setString(8, obra.getImagem());
 		pst.executeUpdate();
 
 	}

@@ -94,7 +94,7 @@ public class EventoControl implements TableModel {
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		Class<?>[] classes = { Long.class, String.class, String.class, Date.class };
+		Class<?>[] classes = { Long.class, String.class, String.class, String.class };
 		return classes[columnIndex];
 	}
 
