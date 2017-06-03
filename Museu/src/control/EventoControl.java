@@ -131,7 +131,7 @@ public class EventoControl implements TableModel {
 		case 2:
 			ev.setDescricao((String) aValue);
 		case 3:
-			ev.setDatainicio((Date) aValue);
+			ev.setDatainicio((String) aValue);
 		}
 	}
 

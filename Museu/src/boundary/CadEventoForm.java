@@ -235,20 +235,11 @@ public class CadEventoForm implements ActionListener {
 
 	public Evento formToEvento() {
 		Evento ev = new Evento();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		ev.setId(id);
 		ev.setNome(txtNome.getText());
 		ev.setDescricao(txtDescricao.getText());
-		try {
-			ev.setDatainicio(sdf.parse(txtDatainicio.getText()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		try {
-			ev.setDataenc(sdf.parse(txtDataenc.getText()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		ev.setDatainicio(txtDatainicio.getText());
+		ev.setDataenc(txtDataenc.getText());
 		ev.setValortot(Float.parseFloat(txtValortot.getText()));
 		ev.setValormeia(Float.parseFloat(txtValormeia.getText()));
 		ev.setQnting(Integer.parseInt(txtQnting.getText()));
@@ -257,11 +248,10 @@ public class CadEventoForm implements ActionListener {
 
 	private void eventoToForm(Evento ev) {
 		id = ev.getId();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		txtNome.setText(ev.getNome());
 		txtDescricao.setText(ev.getDescricao());
-		txtDatainicio.setText(sdf.format(ev.getDatainicio()));
-		txtDataenc.setText(sdf.format(ev.getDataenc()));
+		txtDatainicio.setText(ev.getDatainicio());
+		txtDataenc.setText(ev.getDataenc());
 		txtValortot.setText(String.valueOf(ev.getValortot()));
 		txtValormeia.setText(String.valueOf(ev.getValormeia()));
 		txtQnting.setText(String.valueOf(ev.getQnting()));

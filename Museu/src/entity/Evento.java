@@ -1,13 +1,11 @@
 package entity;
 
-import java.util.Date;
-
 public class Evento {
 	private long id;
 	private String nome;
 	private String descricao;
-	private Date datainicio;
-	private Date dataenc;
+	private String datainicio;
+	private String dataenc;
 	private float valortot;
 	private float valormeia;
 	private int qnting;
@@ -30,16 +28,16 @@ public class Evento {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Date getDatainicio() {
+	public String getDatainicio() {
 		return datainicio;
 	}
-	public void setDatainicio(Date datainicio) {
+	public void setDatainicio(String datainicio) {
 		this.datainicio = datainicio;
 	}
-	public Date getDataenc() {
+	public String getDataenc() {
 		return dataenc;
 	}
-	public void setDataenc(Date dataenc) {
+	public void setDataenc(String dataenc) {
 		this.dataenc = dataenc;
 	}
 	public float getValortot() {

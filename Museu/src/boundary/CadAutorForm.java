@@ -194,14 +194,9 @@ public class CadAutorForm implements ActionListener {
 
 		public Autor formToAutor() {
 			Autor a = new Autor();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			a.setId(id);
 			a.setNome(txtNome.getText());
-			try {
-				a.setNasc(sdf.parse(txtNasc.getText()));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			a.setNasc(txtNasc.getText());
 			a.setPeriodo(txtPeriodo.getText());
 			a.setBiografia(txtBiografia.getText());
 			
@@ -211,9 +206,8 @@ public class CadAutorForm implements ActionListener {
 
 		private void autorToForm(Autor autor) {
 			id = autor.getId();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			txtNome.setText(autor.getNome());
-			txtNasc.setText(sdf.format(autor.getNasc()));
+			txtNasc.setText(autor.getNasc());
 			txtPeriodo.setText(autor.getPeriodo());
 			txtBiografia.setText(autor.getBiografia());
 		}

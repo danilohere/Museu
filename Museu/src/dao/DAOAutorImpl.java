@@ -23,9 +23,7 @@ public class DAOAutorImpl implements DAOAutor {
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setLong(1, 0);
 		pst.setString(2, a.getNome());
-		long numero = a.getNasc().getTime();
-		java.sql.Date d = new java.sql.Date(numero);
-		pst.setDate(3, d);
+		pst.setString(3, a.getNasc());
 		pst.setString(4, a.getPeriodo());
 		pst.setString(5, a.getBiografia());
 		pst.executeUpdate();		
@@ -45,7 +43,7 @@ public class DAOAutorImpl implements DAOAutor {
 			Autor a = new Autor();
 			a.setId(rs.getLong("id"));
 			a.setNome(rs.getString("nome"));
-			a.setNasc(rs.getDate("nasc"));
+			a.setNasc(rs.getString("nasc"));
 			a.setPeriodo(rs.getString("periodo"));
 			a.setBiografia(rs.getString("biografia"));
 			resultados.add(a);
@@ -76,7 +74,7 @@ public class DAOAutorImpl implements DAOAutor {
 		while (rs.next()) {
 			a.setId(rs.getLong("id"));
 			a.setNome(rs.getString("nome"));
-			a.setNasc(rs.getDate("nasc"));
+			a.setNasc(rs.getString("nasc"));
 			a.setPeriodo(rs.getString("periodo"));
 			a.setBiografia(rs.getString("biografia"));
 		}
@@ -89,9 +87,7 @@ public class DAOAutorImpl implements DAOAutor {
 		String sql = "UPDATE autor SET nome = ?, nasc = ?, periodo = ?, biografia = ? WHERE id = ?";
 		PreparedStatement pst = con.prepareStatement(sql);
 		pst.setString(1, a.getNome());
-		long numero = a.getNasc().getTime();
-		java.sql.Date d = new java.sql.Date(numero);
-		pst.setDate(2, d);
+		pst.setString(2, a.getNasc());
 		pst.setString(3, a.getPeriodo());
 		pst.setString(4, a.getBiografia());
 		pst.setLong(5, a.getId());

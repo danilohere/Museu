@@ -8,10 +8,11 @@ public class DAOUtil {
 
 	public static Connection getConnection() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("Classe carregada");
-			String url = "jdbc:mysql://localhost:3306/museu";
-			Connection con = DriverManager.getConnection(url, "root", "root");
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			//Connection con = DriverManager.getConnection(url, "root", "root");
+			Connection con = DriverManager.getConnection(url, "system", "alunofatec");
 			return con;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

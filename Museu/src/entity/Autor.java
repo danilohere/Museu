@@ -5,7 +5,7 @@ import java.util.Date;
 public class Autor {
 	private long id;
 	private String nome;
-	private Date nasc;
+	private String nasc;
 	private String periodo;
 	private String biografia;
 
@@ -25,11 +25,11 @@ public class Autor {
 		this.nome = nome;
 	}
 
-	public Date getNasc() {
+	public String getNasc() {
 		return nasc;
 	}
 
-	public void setNasc(Date nasc) {
+	public void setNasc(String nasc) {
 		this.nasc = nasc;
 	}
 
