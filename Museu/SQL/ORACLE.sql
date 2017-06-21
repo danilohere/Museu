@@ -85,8 +85,8 @@ BEGIN
   SELECT COUNT (*) INTO retorno3 FROM evento;
   out_result := 
   'Quantidade de obras: '||retorno1|| CHR(13) ||
-  'Quantidade de autores: '||retorno2|| CHR(13) ||
-  'Quantidade de eventos: '||retorno3; 
+  ' | Quantidade de autores: '||retorno2|| CHR(13) ||
+  ' | Quantidade de eventos: '||retorno3; 
 END;
 
 EXEC ProcRelatorio(Types.VARCHAR);

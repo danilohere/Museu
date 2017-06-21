@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry excluding="Obras/" kind="src" path="img"/>
 	<classpathentry kind="src" path="img/Obras"/>
+	<classpathentry kind="src" path="relatorio"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="Lib/mysql-connector-java-5.1.39-bin.jar"/>
 	<classpathentry kind="lib" path="ojdbc6.jar"/>

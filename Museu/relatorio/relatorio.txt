@@ -1,0 +1,4 @@
+Relatório
+-----------------
+Quantidade de obras: 5 | Quantidade de autores: 5 | Quantidade de eventos: 5
+-------------

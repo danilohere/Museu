@@ -9,22 +9,23 @@ import dao.DAOMainImpl;
 
 public class MainControl {
 	private DAOMainImpl dao = new DAOMainImpl();
+	private String path = System.getProperty("user.dir");
 	public void gerarRelatorio(){
 		try {
 			String relatorio = dao.gerarRelatorio();
 			FileWriter arq;
 			try {
-				arq = new FileWriter("d:\\relatorio.txt");
+				arq = new FileWriter(path+"/relatorio/relatorio.txt");
 				PrintWriter gravarArq = new PrintWriter(arq);
 				 
 			    gravarArq.println("Relatório");
 			    gravarArq.println("-----------------");
-			    gravarArq.printf(relatorio);
-			    gravarArq.printf("-------------");
+			    gravarArq.println(relatorio);
+			    gravarArq.println("-------------");
 			 
 			    arq.close();
 			 
-			    System.out.printf("Relatório gerado em C:");
+			    System.out.printf("Relatório gerado na pasta Relatórios");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
