@@ -20,12 +20,14 @@ import javax.swing.event.ListSelectionListener;
 
 import control.AutorControl;
 import control.EventoControl;
+import control.MainControl;
 import control.ObraControl;
 import entity.Autor;
 import entity.Evento;
 import entity.Obra;
 
 public class MainPesq implements ActionListener, ListSelectionListener  {
+	private MainControl mainControl = new MainControl();
 	private ObraControl obraControl = new ObraControl();
 	private AutorControl autorControl = new AutorControl();
 	private EventoControl eventoControl = new EventoControl();
@@ -35,6 +37,7 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 	private JTable tabelaEvento;
 	private JTextField txtPesquisa = new JTextField();
 	private JButton btnPesquisar = new JButton("Pesquisar");
+	private JButton btnRelatorio = new JButton("Gerar Relatório");
 	private JButton btnLogar = new JButton();
 	private JButton btnVerDetalhes = new JButton("Ver detalhes");
 	private JButton btnAdicionar = new JButton("Adicionar");
@@ -47,7 +50,7 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 	private JScrollPane panTableObra = new JScrollPane();
 	private JScrollPane panTableAutor = new JScrollPane();
 	private JScrollPane panTableEvento = new JScrollPane();
-	private boolean logado = false; 
+	private boolean logado = true; 
 	private String path = System.getProperty("user.dir");
 	private long id;
 
@@ -106,18 +109,22 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 		
 		panPrincipal.add(panFormulario);
 
-		btnVerDetalhes.setBounds(100, 427, 120, 23);
+		btnRelatorio.setBounds(52, 427, 120, 23);
+		panFormulario.add(btnRelatorio);
+		btnRelatorio.addActionListener(this);
+		
+		btnVerDetalhes.setBounds(192, 427, 120, 23);
 		panFormulario.add(btnVerDetalhes);
 		btnVerDetalhes.addActionListener(this);
 		
 		
-		btnAdicionar.setBounds(255, 427, 120, 23);
+		btnAdicionar.setBounds(332, 427, 120, 23);
 		btnAdicionar.addActionListener(this);
 
-		btnAlterar.setBounds(410, 427, 120, 23);
+		btnAlterar.setBounds(472, 427, 120, 23);
 		btnAlterar.addActionListener(this);
 		
-		btnExcluir.setBounds(565, 427, 120, 23);
+		btnExcluir.setBounds(612, 427, 120, 23);
 		btnExcluir.addActionListener(this);
 		
 		ImageIcon loginimg = new ImageIcon(path+"/img/login.png");
@@ -178,7 +185,7 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 	}
 
 	public static void main(String[] args) {
-		boolean log = false;
+		boolean log = true;
 		new MainPesq(log);
 	}
 
@@ -190,7 +197,9 @@ public class MainPesq implements ActionListener, ListSelectionListener  {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnPesquisar) {
+		if (e.getSource() == btnRelatorio) {
+			mainControl.gerarRelatorio();
+	    } else if (e.getSource() == btnPesquisar) {
 			if (rdbtnObras.isSelected()) {
 				obraControl.pesquisar(txtPesquisa.getText());
 				tabelaObra.invalidate();

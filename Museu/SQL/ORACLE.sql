@@ -73,4 +73,20 @@ CREATE TABLE login (
 	senha varchar(30));
 	
 INSERT INTO login VALUES ('admin', '123');
-  
+
+SET SERVEROUTPUT ON;
+CREATE OR REPLACE PROCEDURE ProcRelatorio (out_result OUT VARCHAR) AS
+retorno1 number;
+retorno2 number;
+retorno3 number;
+BEGIN
+  SELECT COUNT (*) INTO retorno1 FROM obra;
+  SELECT COUNT (*) INTO retorno2 FROM autor;
+  SELECT COUNT (*) INTO retorno3 FROM evento;
+  out_result := 
+  'Quantidade de obras: '||retorno1|| CHR(13) ||
+  'Quantidade de autores: '||retorno2|| CHR(13) ||
+  'Quantidade de eventos: '||retorno3; 
+END;
+
+EXEC ProcRelatorio(Types.VARCHAR);

@@ -16,8 +16,9 @@ public class LoginControl {
  			l = dao.pesquisarPorId(usuario);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			l.setUsuario(null);
+			//l.setUsuario(null);
 		}
+		System.out.println(l.getUsuario());
 		return l;
 	}
 }

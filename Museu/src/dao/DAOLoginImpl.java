@@ -29,7 +29,6 @@ public class DAOLoginImpl implements DAOLogin{
 			l.setUsuario(rs.getString("usuario"));
 			l.setSenha(rs.getString("senha"));
 		}
-	
 	return l;
 	}
 

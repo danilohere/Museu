@@ -19,13 +19,12 @@ public class DAOAutorImpl implements DAOAutor {
 
 	@Override
 	public void adicionar(Autor a) throws SQLException {
-		String sql = "INSERT INTO autor VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO autor VALUES (sq_autor.NEXTVAL, ?, ?, ?, ?)";
 		PreparedStatement pst = con.prepareStatement(sql);
-		pst.setLong(1, 0);
-		pst.setString(2, a.getNome());
-		pst.setString(3, a.getNasc());
-		pst.setString(4, a.getPeriodo());
-		pst.setString(5, a.getBiografia());
+		pst.setString(1, a.getNome());
+		pst.setString(2, a.getNasc());
+		pst.setString(3, a.getPeriodo());
+		pst.setString(4, a.getBiografia());
 		pst.executeUpdate();		
 	}
 

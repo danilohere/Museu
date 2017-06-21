@@ -3,7 +3,6 @@ package boundary;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -145,11 +144,10 @@ public class VerEventoForm implements ActionListener {
 
 	private void eventoToForm(Evento ev) {
 		id = ev.getId();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		lblNome.setText(ev.getNome());
 		txtDescricao.setText(ev.getDescricao());
-		lblDatainicio.setText(sdf.format(ev.getDatainicio()));
-		lblDataenc.setText(sdf.format(ev.getDataenc()));
+		lblDatainicio.setText(ev.getDatainicio());
+		lblDataenc.setText(ev.getDataenc());
 		lblValortot.setText(String.valueOf(ev.getValortot()));
 		lblValormeia.setText(String.valueOf(ev.getValormeia()));
 		lblQnting.setText(String.valueOf(ev.getQnting()));

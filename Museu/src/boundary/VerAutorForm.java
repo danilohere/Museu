@@ -3,7 +3,6 @@ package boundary;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -125,9 +124,8 @@ public class VerAutorForm implements ActionListener {
 
 	private void autorToForm(Autor autor) {
 		id = autor.getId();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		lblNome.setText(autor.getNome());
-		lblNasc.setText(sdf.format(autor.getNasc()));
+		lblNasc.setText(autor.getNasc());
 		lblPeriodo.setText(autor.getPeriodo());
 		txtBiografia.setText(autor.getBiografia());
 	}

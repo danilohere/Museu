@@ -19,16 +19,15 @@ public class DAOEventoImpl implements DAOEvento{
 	
 	@Override
 	public void adicionar(Evento ev) throws SQLException {
-		String sql = "INSERT INTO evento VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO evento VALUES (sq_evento.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pst = con.prepareStatement(sql);
-		pst.setLong(1, 0);
-		pst.setString(2, ev.getNome());
-		pst.setString(3, ev.getDescricao());
-		pst.setString(4, ev.getDatainicio());
-		pst.setString(5, ev.getDataenc());
-		pst.setFloat(6, ev.getValortot());
-		pst.setFloat(7, ev.getValormeia());
-		pst.setInt(8, ev.getQnting());
+		pst.setString(1, ev.getNome());
+		pst.setString(2, ev.getDescricao());
+		pst.setString(3, ev.getDatainicio());
+		pst.setString(4, ev.getDataenc());
+		pst.setFloat(5, ev.getValortot());
+		pst.setFloat(6, ev.getValormeia());
+		pst.setInt(7, ev.getQnting());
 		pst.executeUpdate();				
 	}
 
